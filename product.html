@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Product | My Webpage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" style="text-decoration: none;">
+      <h1 style="display: flex; align-items: center; gap: 12px; font-size: 1.5rem;">
+        <img src="images/pix.jpg" width="50" height="50" alt="Logo"/> 
+        Our Product.
+      </h1>
+    </a>
+
+    <ul class="fav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" target="_tab">About us</a></li>
+      <li><a href="product.html" class="active" target="_tab">Our Product</a></li>
+      <li><a href="contact.html" target="_tab">Contact us</a></li>
+      <li><a href="form.html" target="_tab">Login</a></li>
+    </ul>
+  </div>
+
+  <main>
+    
+    <div style="text-align: center; margin: 30px 0;">
+      <h2 style="color: rgb(196, 11, 11); font-size: 2rem; letter-spacing: 2px; font-family: sans-serif;">TRAINING TIME-TABLE</h2>
+    </div>
+
+    <table border="1" style="width: 90%; margin: 20px auto; border-collapse: collapse; text-align: center; font-family: sans-serif;">
+      <thead>
+        <tr style="background-color: #111111; color: #ffffff;">
+          <th style="padding: 12px;">Days</th>
+          <th style="padding: 12px;">Venue</th>
+          <th style="padding: 12px;">Morning Session<br><small>9am – 12am</small></th>
+          <th style="padding: 12px;">Afternoon Session<br><small>12 pm – 3:00 pm</small></th>
+          <th style="padding: 12px;">Evening Session<br><small>3:00pm – 5:30pm</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td rowspan="2" style="background-color: #111111; color: white; font-weight: bold;">Monday</td>
+          <td>Room 1</td>
+          <td><span style="color: #4a90e2; font-weight: bold;">Power-Bi</span></td>
+          <td><span style="background: #e0b0ff; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
+          <td><span style="background: #fff3cd; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
+        </tr>
+        <tr>
+          <td>Room 2</td>
+          <td>BASIC COMPUTER C<br><small style="background: #fff3cd; padding: 1px 4px;">video editing</small></td>
+          <td><span style="background: #f8d7da; color: #721c24; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="background-color: #111111; color: white; font-weight: bold;">Tuesday</td>
+          <td>Room 1</td>
+          <td><span style="color: #4a90e2; font-weight: bold;">Power-Bi</span></td>
+          <td>Javascript</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Room 2</td>
+          <td><span style="color: #20c997; font-weight: bold;">BASIC COMPUTER B</span></td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="background-color: #111111; color: white; font-weight: bold;">Wednesday</td>
+          <td>Room 1</td>
+          <td><span style="background: #e0b0ff; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
+          <td>Javascript</td>
+          <td><span style="background: #fff3cd; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
+        </tr>
+        <tr>
+          <td>Room 2</td>
+          <td>BASIC COMPUTER C<br><small style="background: #fff3cd; padding: 1px 4px;">video editing</small></td>
+          <td><span style="background: #f8d7da; color: #721c24; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="background-color: #111111; color: white; font-weight: bold;">Thursday</td>
+          <td>Room 1</td>
+          <td><span style="color: #4a90e2; font-weight: bold;">Power-Bi</span></td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Room 2</td>
+          <td><span style="color: #20c997; font-weight: bold;">BASIC COMPUTER B</span><br><small style="background: #fff3cd; padding: 1px 4px;">video editing</small></td>
+          <td><span style="background: #f8d7da; color: #721c24; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" style="background-color: #111111; color: white; font-weight: bold;">Friday</td>
+          <td>Room 1</td>
+          <td><span style="background: #e0b0ff; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
+          <td>Javascript</td>
+          <td><span style="background: #fff3cd; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
+        </tr>
+        <tr>
+          <td>Room 2</td>
+          <td>BASIC COMPUTER C<br><span style="color: #20c997; font-weight: bold;">BASIC COMPUTER B</span></td>
+          <td>X</td>
+          <td>X</td>
+        </tr>
+
+        <tr>
+          <td style="background-color: #111111; color: white; font-weight: bold;">Saturday</td>
+          <td>Room 1</td>
+          <td style="color: #dc3545; font-weight: bold;">X</td>
+          <td style="color: #dc3545; font-weight: bold;">X</td>
+          <td style="color: #dc3545; font-weight: bold;">X</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </main>
+
+  <footer style="text-align: center; margin-top: 40px; padding: 20px; font-family: sans-serif;">
+    <p>&copy; 2026 My Webpage. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

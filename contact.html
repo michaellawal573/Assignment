@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title> Contact Us | My Webpage</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+          
+        <a href="index.html"
+        style="text-decoration: none;">
+        <h1 style="display: flex; align-items: center; gap: 15px;">
+            <img src="images/pix.jpg" width="50" height="50"> Contact Us.
+        </h1>  
+        </a>
+
+        <ul class="fav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" target="_tab">About us</a></li>
+        <li><a href="product.html" target="_tab">Our Product</a></li>
+        <li><a href="contact.html" target="_tab">Contact us</a></li>
+        <li><a href="form.html" target="_tab">Login</a>
+        </ul>
+
+        <img src="images/ororo.jpg" alt="herobanner" width="100%" height="500"/><br /><br />
+        <p>Configure, customize, and request a quote for our premium digital product licenses. Fill out the specific requirements below to tailor the software build to your needs.</p><br />
+
+
+
+        <form action="">
+            <fieldset>
+             <legend><strong>Product Configuration Details</strong></legend>
+
+        <p>
+        <label for="company-name"> *Exact Title of your Organization:</label>
+        <input type="text" id="company-name" required>
+        </p>
+
+        <p>
+        <label for="license-name"> *Title of the requested software package in English:</label>
+        <input type="text" id="license-name" required>
+        </p>
+
+        <p>
+            <label> *Prior license or trial version obtained:</label>
+            <label><input type="radio" name="prior-trial" value="yes" required>Yes</label>
+            <label><input type="radio" name="prior-trial" value="no">No </label>
+        </p>
+
+        <p>
+            <label> *Requested Service Window:</label>
+            <span>From:</span>
+            <input type="date" id="service-end" required>
+            <span>To:</span>
+            <input type="date" id="service-end" required>
+        </p>
+
+        <p>
+            <label for="product-type">*Type of Software Product</label>
+            <select id="product-type" required>
+                <option value="">--Choose Option--</option>
+                <option value="saas">--Saas Cloud Application</option>
+                <option value="mobile">--Mobile App Framework</option>
+                <option value="desktop">Desktop Dashboard Suite</option>
+                <option value="api">Enterprise Api Access</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="deployment-country">*Primary Deployment Country</label>
+            <select id="deployment-country" required>
+                <option value="">--Choose Option--</option>
+                <option value="USA">United States of America</option>
+                <option value="UK">United Kingdom</option>
+                <option value="FRN">Federal Republic of Nigeria</option>
+                <option value="UAE">United Arab Emirates</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="server-city">*City where central server is hosted:</label>
+            <input type="text" id="server-city" required>
+        </p>
+
+        <p>
+            <label for="billing-name">*Please enter name of billing institution:</label>
+            <input type="text" id="billing-name" required>
+        </p>
+
+        <p>
+            <label for="company-url">*Institution Corporate Website:</label>
+            <input type="url" id="company-url" placeholder="https://example.com">
+        </p>
+
+        <p>
+            <label for="main-tier">*Main Tier of Operation (Product Scale):</label>
+            <select id="main-tier" required>
+                <option value="">--Choose Option--</option>
+                <option value="startup">Startup Scale Environment</option>
+                <option value="mid">Mid-Market Business Tier</option>
+                <option value="enterprise">Global Enterprise Infrastructure</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="field-industry">*Field of Application (Industry Focus):</label>
+            <select id="field-industry" required>
+                <option value="">--Choose Option--</option>
+                <option value="fintech">Fintech / Digital Banking</option>
+                <option value="edtech">Edtech / Learning Platforms</option>
+                <option value="ecommerce">E-Commerce & Logistics</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="specialization">*Specialization Subcategory / Custom Plugin:</label>
+            <input type="text" id="specialization">
+        </p>
+
+        <p>
+            <label>*Hosting Management Method:</label>
+            <label><input type="radio" name="hosting" value="full-time" checked> Full-time Cloud Hosting</label>
+            <label><input type="radio" name="hosting" value="part-time">Self-Hosted On-Premise</label>
+        </p>
+
+        <p>
+            <label for="support-method">*Technical-Support Method:</label>
+            <select id="support-method" required>
+                <option value="priority">24/7 Priority Engineer Sprints</option>
+                <option value="standard">Standard Business Hours Support</option> 
+                <option value="self">Self-Service Documentation</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="additional-comments">*Additional Comments / Custom Requests:</label>
+            <textarea id="additional-comments" rows="4" cols="50"></textarea>
+        </p>
+
+        <p><small>If your exact choice is not listed in the drop-down menus, please select the closeset relevant option and explain in the "Additional Comments".</small></p>
+
+        <p>
+            <button type="submit">Submit Request</button>
+            <button type="refresh">Clear</button><br />
+        </p>
+
+        </fieldset>
+        </form>
+
+        <footer>
+            <p>&copy; 2026 My Webpage. All rights reserved.</p>
+        </footer>
+    </body> 
