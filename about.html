@@ -1,85 +1,480 @@
-<html>
-    <head>
-        <title> About Us | My Webpage</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-          
-        <a href="index.html"
-        style="text-decoration: none;">
-        <h1 style="display: flex; align-items: center; gap: 15px;">
-            <img src="images/pix.jpg" width="50" height="50"> About Us.
-        </h1>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | M&C Training Academy</title>
+  <link rel="icon" href="images/pix.jpg" type="image/jpg">
+  
+  <style>
+  
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeLeft{
+    from{
+        opacity:0;
+        transform:translateX(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes zoomIn{
+    from{
+        opacity:0;
+        transform:scale(.92);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 4%;
+    background:#fff;
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+    animation:fadeUp .8s ease;
+}
+
+    .logo-link {
+      text-decoration: none;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;                    
+      font-size: 1.25rem;            
+      margin: 0;
+      color: #333333;
+      animation: fadeLeft 1s ease;
+    }
+
+
+    .fav-list {
+      display: flex;
+      gap: 12px;                     
+      list-style-type: none;
+      background-color: white;
+      padding: 6px 16px;              
+      margin: 0;
+    }
+
+    .fav-list a {
+      text-decoration: none;
+      color: #444444;
+      font-weight: bold;
+      font-size: 0.85rem;           
+      padding: 4px 6px;
+      display: inline-block;
+      position: relative;
+      transition: .35s;
+    }
+
+    .fav-list a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:rgb(196,11,11);
+    transition:.4s;
+}
+
+.fav-list a:hover::after{
+    width:100%;
+}
+
+.fav-list a:hover{
+    color:rgb(196,11,11);
+    transform:translateY(-3px);
+}
+
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown > a{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:130%;
+    left:0;
+    min-width:180px;
+    background:#fff;
+    list-style:none;
+    padding:8px 0;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+
+    transition:all .35s ease;
+    z-index:999;
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:10px 18px;
+    color:#444;
+    text-decoration:none;
+    transition:.35s ease;
+}
+
+.dropdown-menu a::after{
+    display:none;
+}
+
+.dropdown-menu a:hover{
+    background:#f5f5f5;
+    color:rgb(196,11,11);
+    padding-left:25px;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.content-wrapper ul,
+.content-wrapper ol,
+.terms-list,
+.toolkit-list{
+    animation:fadeUp 1.3s ease;
+}
+
+footer{
+    animation:fadeUp 1.5s ease;
+}
+
+/* Logo hover */
+.nav-title img{
+    transition:.4s;
+}
+
+.nav-title img:hover{
+    transform:rotate(360deg) scale(1.15);
+}
+
+/* About title hover */
+.nav-title{
+    transition:.3s;
+}
+
+.nav-title:hover{
+    color:rgb(196,11,11);
+}
+
+mark{
+    transition:.4s;
+}
+
+mark:hover{
+    background:rgb(196,11,11);
+    color:#fff;
+}
+
+strong{
+    transition:.3s;
+}
+
+strong:hover{
+    color:rgb(196,11,11);
+}
+
+.terms-list dd{
+    transition:.3s;
+}
+
+.terms-list dd:hover{
+    padding-left:10px;
+    color:#222;
+}
+
+button{
+    transition:.3s ease;
+}
+footer:hover{
+    background:#f3f3f3;
+}
+
+    .fav-list a.active, 
+    .fav-list a:hover {
+      color: rgb(196, 11, 11);
+    }
+
+    .hero-banner-container{
+    width:100%;
+    max-height:400px;
+    overflow:hidden;
+}
+
+.hero-banner-img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    display:block;
+    transform: scale(1);
+    transition:transform 5s ease-in-out;
+}
+
+.hero-banner-container:hover .hero-banner-img{
+    transform:scale(1.1);
+}
+
+    .content-wrapper {
+      width: 85%;
+      max-width: 800px;
+      margin: 40px auto 60px auto; 
+      color: #333333;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .content-wrapper h2 {
+      color: rgb(196, 11, 11);
+      font-size: 1.6rem;
+      margin-top: 35px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 5px;
+      transition: .4s;
+    }
+
+    .content-wrapper h2:hover {
+      padding-left: 10px;
+      border-color: rgb(196, 11, 11);
+    }
+
+    .content-wrapper p {
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+      line-height: 1.8;
+      transition: .3s;
+    }
+
+    .content-wrapper p:hover{
+      color: #111111;
+    }
+
+   
+    .content-wrapper ul, 
+    .content-wrapper ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+
+    .content-wrapper li{
+    margin-bottom:8px;
+    transition:.3s;
+}
+
+.content-wrapper li:hover{
+    color:rgb(196,11,11);
+    transform:translateX(8px);
+}
+
+.terms-list dt{
+    font-size:1.1rem;
+    margin-top:15px;
+    color:#111;
+    transition:.3s;
+}
+
+.terms-list dt:hover{
+    color:rgb(196,11,11);
+}
+
+.terms-list dd{
+    margin-left:0;
+    margin-bottom:15px;
+    color:#555;
+}
+
+.toolkit-list > li{
+    font-weight:bold;
+    margin-top:15px;
+    list-style-type:square;
+    transition:.3s;
+}
+
+.toolkit-list > li:hover{
+    transform:translateX(8px);
+    color:rgb(196,11,11);
+}
+
+    .toolkit-list ul {
+      font-weight: normal;
+      list-style-type: circle;
+      margin-top: 5px;
+    }
+
+    .nav-title img{
+    border-radius:50%;
+    animation:float 3s ease-in-out infinite;
+}
+
+::selection{
+    background:rgb(196,11,11);
+    color:#fff;
+}
+
+   
+footer{
+    text-align:center;
+    padding:25px;
+    background:#f9f9f9;
+    border-top:1px solid #eee;
+    color:#777;
+    animation:fadeUp 1.5s ease;
+}
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-link">
+      <h1 class="nav-title">
+        <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
+        About Us.
+
+      </h1>
     </a>
 
-        <ul class="fav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" target="_tab">About us</a></li>
-        <li><a href="product.html" target="_tab">Our Product</a></li>
-        <li><a href="contact.html" target="_tab">Contact us</a></li>
-        <li><a href="form.html" target="_tab">Login</a>
+<ul class="fav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" target="_tab">About Us</a></li>
+    <li><a href="product.html" target="_tab">Our Product</a></li>
+    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+
+    <li class="dropdown">
+        <a href="#">More ▾</a>
+
+        <ul class="dropdown-menu">
+            <li><a href="form.html" target="_tab">Login</a></li>
+            <li><a href="service.html" target="_tab">Crypto</a></li>
+            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
+            <li><a href="marquee.html" target="_tab">Marquee</a></li>
         </ul>
+    </li>
+</ul>
+  </div>
 
-        <img src="images/logo.jpg" alt="herobanner" width="100%" height="500"/>
+  <div class="hero-banner-container">
+    <img src="images/logo.jpg" alt="herobanner" class="hero-banner-img"/>
+  </div>
 
+  <main class="content-wrapper">
 
-        <p>Welcome! We are a team of passionate creators dedicated to building<strong> high-quality digital solutions</strong>. Our mission is to make the web a<em> more beautiful and accessible</em> place for everyone. <mark>Continous learning</mark> is at the core of everything we do.</p>
+    <p>Welcome! We are a team of passionate creators dedicated to building <strong>high-quality digital solutions</strong>. Our mission is to make the web a <em>more beautiful and accessible</em> place for everyone. <mark>Continuous learning</mark> is at the core of everything we do.</p>
 
-        <h2> Our Core Values </h2>
-        <p>These are the principles that guide our day-to-day work:</p>
+    <h2>Our Core Values</h2>
+    <p>These are the principles that guide our day-to-day work:</p>
+    <ul>
+      <li><strong>Empathy:</strong> Understanding the needs of our users.</li>
+      <li><strong>Innovation:</strong> Pushing the boundaries of modern design.</li>
+      <li><strong>Integrity:</strong> Doing honest work and writing clean code.</li>
+    </ul>
 
+    <h2>How We Work (Our Process)</h2>
+    <p>We follow a strict, step-by-step roadmap to bring ideas to life:</p>
+    <ol>
+      <li><ins>Discovery & Planning</ins> - Brainstorming and setting project benchmarks.</li>
+      <li><ins>Design & Prototyping</ins> - Creating visual layouts.</li>
+      <li><ins>Development & Testing</ins> - Writing clean, functional code.</li>
+    </ol>
+
+    <h2>Key Terms</h2>
+    <p>Here are a few technical terms we live by:</p>
+    <dl class="terms-list">
+      <dt><strong>HTML5</strong></dt>
+      <dd>The standard markup language used to structure content on the web.</dd>
+
+      <dt><strong>CSS3</strong></dt>
+      <dd>The style sheet language used to describe the presentation and layout of a document.</dd>
+
+      <dt><strong>Responsive Design</strong></dt>
+      <dd>An approach to web design that makes web pages render well on a variety of devices and screen sizes.</dd>
+    </dl>
+
+    <h2>Our Technical Tool-kit</h2>
+    <p>A breakdown of the specific tools and topics we specialize in:</p>
+    <ul class="toolkit-list">
+      <li>Front-End Development
         <ul>
-            <li><strong>Empathy:</strong>Understanding the needs of our users.</li>
-            <li><strong>Innovation:</strong>Pushing the boundaries of modern design.</li>
-            <li><strong>Integrity:</strong>Doing honest work and writing clean code</li>
+          <li>Semantic HTML Structure</li>
+          <li>Modern CSS Layouts (Flexbox and Grid)</li>
         </ul>
+      </li>
+      <li>Design Frameworks
+        <ul>
+          <li>Figma Wireframing</li>
+          <li>Color Theory & Typography</li>
+        </ul>
+      </li>
+    </ul>
 
-        <h2>How We Work (Our Process)</h2>
-        <p>We follow a strict, step-by-step roadmap to bring ideas to life:</p>
+  </main>
 
-        <ol>
-            <li><ins>Discovery & Planning</ins> - Brainstorming and setting project benchmarks.</li>
-            <li><ins>Design & Prototyping</ins> - Creating visual layouts.</li>
-            <li><ins>Development & Testing</ins> - Writing messy scripts</li>
+  <footer>
+    <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
+  </footer>
 
-            <h2 style="color: rgba(196, 11, 11);">Key Terms</h2>
-                
-            <p>Here are a few technical terms we live by:</p>
-
-            <dl>
-                <dt><strong>HTML5</strong></dt>
-                <dd>The standard markup language used to structure content on the web.</dd><br />
-
-                <dt><strong>CSS3</strong></dt>
-                <dd>The style sheet language used to describe the presentation and layout of a document.</dd><br />
-
-                <dt><strong>Responsive Design</strong></dt>
-                <dd>An approach to web design that makes web pages render well on a variety of devices and screen sizes.</dd><br />
-            </dl>
-
-            <h2 style="color: rgba(196, 11, 11);">Our Technical Tool-kit</h2>
-            <p>A breakdown of the specific tools and topics we specialize in:</p>
-
-            <ul>
-                <li>Front-End Development
-                    <ul>
-                        <li>Semantic HTML Structure</li>
-                        <li>Modern CSS Layouts (Flexbox and Grid)</li>
-            </ul>
-            </li><br />
-
-            <li>Design Frameworks
-                <ul>
-                    <li>Figma Wireframing</li>
-                    <li>Color Theory & Typography</li>
-                </ul>
-                </li><br />
-
-                <footer>
-                    <p>&copy; 2026 My Webpage. All rights reserved.</p>
-                </footer>
-                </ul>
-            </ul>
-        </ol>
-    </body>
+</body>
 </html>

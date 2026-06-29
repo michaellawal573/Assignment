@@ -1,151 +1,594 @@
-<html>
-    <head>
-        <title> Contact Us | My Webpage</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-          
-        <a href="index.html"
-        style="text-decoration: none;">
-        <h1 style="display: flex; align-items: center; gap: 15px;">
-            <img src="images/pix.jpg" width="50" height="50"> Contact Us.
-        </h1>  
-        </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Training Schedule</title>
+  <link rel="icon" href="images/pix.jpg" type="image/jpg">
+  
+  <style>
+     
 
-        <ul class="fav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" target="_tab">About us</a></li>
-        <li><a href="product.html" target="_tab">Our Product</a></li>
-        <li><a href="contact.html" target="_tab">Contact us</a></li>
-        <li><a href="form.html" target="_tab">Login</a>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdfdfd;
+      color: #333333;
+    }
+
+  @keyframes heroZoom{
+    0%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;            
+      padding: 10px 4%;              
+      background-color: #ffffff;
+      width: 100%;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .logo-link {
+      text-decoration: none;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;                      
+      font-size: 1.25rem;            
+      margin: 0;
+      color: #111111;
+    }
+
+    .fav-list{
+    display:flex;
+    gap:12px;
+    list-style:none;
+    background:#fff;
+    padding:6px 20px;
+    margin:0;
+    margin-right: 100px;
+}
+
+.fav-list a{
+    text-decoration:none;
+    color:#444;
+    font-weight:bold;
+    font-size:.85rem;
+    padding:6px 10px;
+    display:inline-block;
+    position:relative;
+    transition:all .35s ease;
+}
+
+.fav-list a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:rgb(196,11,11);
+    transition:width .4s ease;
+}
+
+.fav-list a:hover::after{
+    width:100%;
+}
+
+.fav-list a:hover{
+    color:rgb(196,11,11);
+    transform:translateY(-3px);
+}
+
+.fav-list a.active{
+    color:rgb(196,11,11);
+}
+
+.fav-list a.active::after{
+    width:100%;
+}
+
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown > a{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:130%;
+    left:0;
+    min-width:180px;
+    background:#fff;
+    list-style:none;
+    padding:8px 0;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+
+    transition:all .35s ease;
+    z-index:999;
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:10px 18px;
+    color:#444;
+    text-decoration:none;
+    transition:.35s ease;
+}
+
+.dropdown-menu a::after{
+    display:none;
+}
+
+.dropdown-menu a:hover{
+    background:#f5f5f5;
+    color:rgb(196,11,11);
+    padding-left:25px;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+    .fav-list a.active, 
+    .fav-list a:hover {
+      color: rgb(196, 11, 11);
+    }
+
+.hero-banner{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.hero-banner-container:hover .hero-banner-img {
+  transform: scale(1.1);
+}
+.hero-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-banner-container {
+  width: 100%;
+  height: 400px;         
+  overflow: hidden;      
+  position: relative;
+}
+
+.hero-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  display: block;
+  transform: scale(1);
+  transition: transform 5s ease-in-out;
+}
+
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12); /* Clean zoom up to 112% */
+  }
+  100% {
+    transform: scale(1);    /* Smoothly zooms back down */
+  }
+}
+
+
+    .content-wrapper {
+      width: 90%;
+      max-width: 750px;             
+      margin: 30px auto 60px auto;   
+    }
+
+    .intro-text {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555555;
+      margin-bottom: 25px;
+    }
+
+    fieldset {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    }
+
+    legend {
+      padding: 0 15px;
+      color: rgb(196, 11, 11);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      gap: 15px;
+    }
+
+    .form-row label {
+      width: 35%;                    
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #444444;
+      padding-top: 8px;             
+    }
+
+    .input-field {
+      width: 65%;                   
+    }
+
+ 
+    input[type="text"],
+    input[type="date"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #cccccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background-color: #fafafa;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="url"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgb(196, 11, 11);
+      background-color: #ffffff;
+      outline: none;
+    }
+
+    
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 6px;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: normal !important;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    
+    .date-range-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .date-field-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .date-field-group span {
+      font-size: 0.85rem;
+      color: #666666;
+    }
+
+    
+    .button-group {
+      display: flex;
+      justify-content: center;       
+      gap: 15px;                      
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #eeeeee;
+    }
+
+    button[type="submit"],
+    button[type="reset"] {
+      padding: 10px 30px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    button[type="submit"] {
+      background-color: rgb(196, 11, 11);
+      color: white;
+    }
+
+    button[type="reset"] {
+      background-color: #e2e3e5;
+      color: #333333;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #990808;
+    }
+
+    button[type="reset"]:hover {
+      background-color: #d2d3d5;
+    }
+
+    button:active {
+      transform: scale(0.98);       
+    }
+
+    .note-text {
+      text-align: center;
+      color: #777777;
+      margin-top: 15px;
+    }
+
+    .nav-title img{
+    border-radius:50%;
+    animation:float 3s ease-in-out infinite;
+}
+
+::selection{
+    background:rgb(196,11,11);
+    color:#fff; 
+  }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #eeeeee;
+      color: #777777;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-link">
+      <h1 class="nav-title">
+        <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
+        Contact Us.
+
+      </h1>
+    </a>
+
+<ul class="fav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" target="_tab">About Us</a></li>
+    <li><a href="product.html" target="_tab">Our Product</a></li>
+    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+
+    <li class="dropdown">
+        <a href="#">More ▾</a>
+
+        <ul class="dropdown-menu">
+            <li><a href="form.html" target="_tab">Login</a></li>
+            <li><a href="service.html" target="_tab">Crypto</a></li>
+            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
+            <li><a href="marquee.html" target="_tab">Marquee</a></li>
         </ul>
+    </li>
+</ul>
+  </div>
 
-        <img src="images/ororo.jpg" alt="herobanner" width="100%" height="500"/><br /><br />
-        <p>Configure, customize, and request a quote for our premium digital product licenses. Fill out the specific requirements below to tailor the software build to your needs.</p><br />
+  <div class="hero-banner-container">
+    <img src="images/ororo.jpg" alt="herobanner" class="hero-banner-img"/>
+  </div>
 
+  <main class="content-wrapper">
+    
+    <p class="intro-text">Configure, customize, and request a quote for our premium digital product licenses. Fill out the specific requirements below to tailor the software build to your needs.</p>
 
+    <form action="">
+      <fieldset>
+        <legend>Product Configuration Details</legend>
 
-        <form action="">
-            <fieldset>
-             <legend><strong>Product Configuration Details</strong></legend>
+        <div class="form-row">
+          <label for="company-name">*Exact Title of your Organization:</label>
+          <div class="input-field">
+            <input type="text" id="company-name" required>
+          </div>
+        </div>
 
-        <p>
-        <label for="company-name"> *Exact Title of your Organization:</label>
-        <input type="text" id="company-name" required>
-        </p>
+        <div class="form-row">
+          <label for="license-name">*Title of the requested software package in English:</label>
+          <div class="input-field">
+            <input type="text" id="license-name" required>
+          </div>
+        </div>
 
-        <p>
-        <label for="license-name"> *Title of the requested software package in English:</label>
-        <input type="text" id="license-name" required>
-        </p>
+        <div class="form-row">
+          <label>*Prior license or trial version obtained:</label>
+          <div class="input-field radio-group">
+            <label class="radio-label"><input type="radio" name="prior-trial" value="yes" required> Yes</label>
+            <label class="radio-label"><input type="radio" name="prior-trial" value="no"> No</label>
+          </div>
+        </div>
 
-        <p>
-            <label> *Prior license or trial version obtained:</label>
-            <label><input type="radio" name="prior-trial" value="yes" required>Yes</label>
-            <label><input type="radio" name="prior-trial" value="no">No </label>
-        </p>
+        <div class="form-row">
+          <label>*Requested Service Window:</label>
+          <div class="input-field date-range-row">
+            <div class="date-field-group">
+              <span>From:</span>
+              <input type="date" id="service-start" required>
+            </div>
+            <div class="date-field-group">
+              <span>To:</span>
+              <input type="date" id="service-end" required>
+            </div>
+          </div>
+        </div>
 
-        <p>
-            <label> *Requested Service Window:</label>
-            <span>From:</span>
-            <input type="date" id="service-end" required>
-            <span>To:</span>
-            <input type="date" id="service-end" required>
-        </p>
-
-        <p>
-            <label for="product-type">*Type of Software Product</label>
+        <div class="form-row">
+          <label for="product-type">*Type of Software Product:</label>
+          <div class="input-field">
             <select id="product-type" required>
-                <option value="">--Choose Option--</option>
-                <option value="saas">--Saas Cloud Application</option>
-                <option value="mobile">--Mobile App Framework</option>
-                <option value="desktop">Desktop Dashboard Suite</option>
-                <option value="api">Enterprise Api Access</option>
+              <option value="">--Choose Option--</option>
+              <option value="saas">SaaS Cloud Application</option>
+              <option value="mobile">Mobile App Framework</option>
+              <option value="desktop">Desktop Dashboard Suite</option>
+              <option value="api">Enterprise API Access</option>
             </select>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="deployment-country">*Primary Deployment Country</label>
+        <div class="form-row">
+          <label for="deployment-country">*Primary Deployment Country:</label>
+          <div class="input-field">
             <select id="deployment-country" required>
-                <option value="">--Choose Option--</option>
-                <option value="USA">United States of America</option>
-                <option value="UK">United Kingdom</option>
-                <option value="FRN">Federal Republic of Nigeria</option>
-                <option value="UAE">United Arab Emirates</option>
+              <option value="">--Choose Option--</option>
+              <option value="USA">United States of America</option>
+              <option value="UK">United Kingdom</option>
+              <option value="FRN">Federal Republic of Nigeria</option>
+              <option value="UAE">United Arab Emirates</option>
             </select>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="server-city">*City where central server is hosted:</label>
+        <div class="form-row">
+          <label for="server-city">*City where central server is hosted:</label>
+          <div class="input-field">
             <input type="text" id="server-city" required>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="billing-name">*Please enter name of billing institution:</label>
+        <div class="form-row">
+          <label for="billing-name">*Please enter name of billing institution:</label>
+          <div class="input-field">
             <input type="text" id="billing-name" required>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="company-url">*Institution Corporate Website:</label>
+        <div class="form-row">
+          <label for="company-url">Institution Corporate Website:</label>
+          <div class="input-field">
             <input type="url" id="company-url" placeholder="https://example.com">
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="main-tier">*Main Tier of Operation (Product Scale):</label>
+        <div class="form-row">
+          <label for="main-tier">*Main Tier of Operation (Product Scale):</label>
+          <div class="input-field">
             <select id="main-tier" required>
-                <option value="">--Choose Option--</option>
-                <option value="startup">Startup Scale Environment</option>
-                <option value="mid">Mid-Market Business Tier</option>
-                <option value="enterprise">Global Enterprise Infrastructure</option>
+              <option value="">--Choose Option--</option>
+              <option value="startup">Startup Scale Environment</option>
+              <option value="mid">Mid-Market Business Tier</option>
+              <option value="enterprise">Global Enterprise Infrastructure</option>
             </select>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="field-industry">*Field of Application (Industry Focus):</label>
+        <div class="form-row">
+          <label for="field-industry">*Field of Application (Industry Focus):</label>
+          <div class="input-field">
             <select id="field-industry" required>
-                <option value="">--Choose Option--</option>
-                <option value="fintech">Fintech / Digital Banking</option>
-                <option value="edtech">Edtech / Learning Platforms</option>
-                <option value="ecommerce">E-Commerce & Logistics</option>
+              <option value="">--Choose Option--</option>
+              <option value="fintech">Fintech / Digital Banking</option>
+              <option value="edtech">Edtech / Learning Platforms</option>
+              <option value="ecommerce">E-Commerce & Logistics</option>
             </select>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="specialization">*Specialization Subcategory / Custom Plugin:</label>
+        <div class="form-row">
+          <label for="specialization">Specialization Subcategory / Custom Plugin:</label>
+          <div class="input-field">
             <input type="text" id="specialization">
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label>*Hosting Management Method:</label>
-            <label><input type="radio" name="hosting" value="full-time" checked> Full-time Cloud Hosting</label>
-            <label><input type="radio" name="hosting" value="part-time">Self-Hosted On-Premise</label>
-        </p>
+        <div class="form-row">
+          <label>*Hosting Management Method:</label>
+          <div class="input-field radio-group">
+            <label class="radio-label"><input type="radio" name="hosting" value="full-time" checked> Full-time Cloud Hosting</label>
+            <label class="radio-label"><input type="radio" name="hosting" value="part-time"> Self-Hosted On-Premise</label>
+          </div>
+        </div>
 
-        <p>
-            <label for="support-method">*Technical-Support Method:</label>
+        <div class="form-row">
+          <label for="support-method">*Technical-Support Method:</label>
+          <div class="input-field">
             <select id="support-method" required>
-                <option value="priority">24/7 Priority Engineer Sprints</option>
-                <option value="standard">Standard Business Hours Support</option> 
-                <option value="self">Self-Service Documentation</option>
+              <option value="priority">24/7 Priority Engineer Sprints</option>
+              <option value="standard">Standard Business Hours Support</option> 
+              <option value="self">Self-Service Documentation</option>
             </select>
-        </p>
+          </div>
+        </div>
 
-        <p>
-            <label for="additional-comments">*Additional Comments / Custom Requests:</label>
-            <textarea id="additional-comments" rows="4" cols="50"></textarea>
-        </p>
+        <div class="form-row">
+          <label for="additional-comments">Additional Comments / Custom Requests:</label>
+          <div class="input-field">
+            <textarea id="additional-comments" rows="4"></textarea>
+          </div>
+        </div>
 
-        <p><small>If your exact choice is not listed in the drop-down menus, please select the closeset relevant option and explain in the "Additional Comments".</small></p>
+        <p class="note-text"><small>If your exact choice is not listed in the drop-down menus, please select the closest relevant option and explain in the "Additional Comments".</small></p>
 
-        <p>
-            <button type="submit">Submit Request</button>
-            <button type="refresh">Clear</button><br />
-        </p>
+        <div class="button-group">
+          <button type="submit">Submit Request</button>
+          <button type="reset">Clear</button>
+        </div>
 
-        </fieldset>
-        </form>
+      </fieldset>
+    </form>
+  </main>
 
-        <footer>
-            <p>&copy; 2026 My Webpage. All rights reserved.</p>
-        </footer>
-    </body> 
+  <footer>
+    <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

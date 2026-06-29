@@ -1,59 +1,369 @@
-<html>
-    <head>
-        <title> Login | My Webpage</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body class="login-page">
-        
-        <div class="top-bar">
-        <a href="index.html"
-        style="text-decoration: none;">
-          <h1 style="display: flex; align-items: center; gap: 12px; font-size: 1.5em; font-weight: bold;">
-            <img src="images/pix.jpg" width="50" height="50"> Login.
-        </h1>  
-        </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | M&C Training Academy</title>
+  <link rel="icon" href="images/pix.jpg" type="image/jpg">
+  
+  <style>
+  
 
-        <ul class="fav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" target="_tab">About us</a></li>
-        <li><a href="product.html" target="_tab">Our Product</a></li>
-        <li><a href="contact.html" target="_tab">Contact us</a></li>
-        <li><a href="form.html" target="_tab">Login</a></li>
+    body.login-page {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('images/new.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes float{
+    0%{
+        transform: translateY(0);
+    }
+
+    50%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;            
+      padding: 10px 4%;
+      background-color: #ffffff;
+      width: 100%;
+    }
+
+    .logo-link {
+      text-decoration: none;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      margin: 0;
+      color: #333333;
+    }
+
+    .nav-title img{
+    border-radius:50%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.fav-list{
+    display:flex;
+    gap:12px;
+    list-style:none;
+    background:#fff;
+    padding:6px 20px;
+    margin:0;
+    margin-right: 70px;
+}
+
+.fav-list a{
+    text-decoration:none;
+    color:#444;
+    font-weight:bold;
+    font-size:.85rem;
+    padding:6px 10px;
+    display:inline-block;
+    position:relative;
+    transition:all .35s ease;
+}
+
+.fav-list a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:rgb(196,11,11);
+    transition:width .4s ease;
+}
+
+.fav-list a:hover::after{
+    width:100%;
+}
+
+.fav-list a:hover{
+    color:rgb(196,11,11);
+    transform:translateY(-3px);
+}
+
+.fav-list a.active{
+    color:rgb(196,11,11);
+}
+
+.fav-list a.active::after{
+    width:100%;
+}
+
+   
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+   
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      text-align: center;
+      color: #ffffff;                 
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .login-card h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .login-card p {
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    .login-card label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .login-card input[type="email"],
+    .login-card input[type="password"] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      padding: 8px 0;
+      color: #ffffff;                 
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .login-card input:focus {
+      border-bottom-color: rgb(196, 11, 11); 
+    }
+    
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin-bottom: 30px;
+    }
+
+    .form-options label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .form-options label input {
+      margin: 0;
+    }
+
+    .form-options a,
+    .signup-prompt a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px dotted #ffffff;
+    }
+
+    .form-options a:hover,
+    .signup-prompt a:hover {
+      color: rgb(196, 11, 11);
+      border-bottom: 1px solid rgb(196, 11, 11);
+    }
+
+   
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      background-color: rgb(196, 11, 11); 
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .login-card button:hover {
+      background-color: #a00909;
+    }
+
+    .login-card button:active {
+      transform: scale(0.98);
+    }
+
+    .signup-prompt {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown > a{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:130%;
+    left:0;
+    min-width:180px;
+    background:#fff;
+    list-style:none;
+    padding:8px 0;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+
+    transition:all .35s ease;
+    z-index:999;
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:10px 18px;
+    color:#444;
+    text-decoration:none;
+    transition:.35s ease;
+}
+
+.dropdown-menu a::after{
+    display:none;
+}
+
+.dropdown-menu a:hover{
+    background:#f5f5f5;
+    color:rgb(196,11,11);
+    padding-left:25px;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+  
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #ffffff;
+      border-top: 1px solid #eeeeee;
+      color: #777777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="login-page">
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-link">
+      <h1 class="nav-title">
+        <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
+        M&C Training Academy.
+      </h1>
+    </a>
+
+<ul class="fav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" target="_tab">About Us</a></li>
+    <li><a href="product.html" target="_tab">Our Product</a></li>
+    <li><a href="form.html" target="_tab">Login</a></li>
+
+    <li class="dropdown">
+        <a href="#">More ▾</a>
+
+        <ul class="dropdown-menu">
+            <li><a href="contact.html" target="_tab">Contact Us</a></li>
+            <li><a href="service.html" target="_tab">Crypto</a></li>
+            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
+            <li><a href="marquee.html" target="_tab">Marquee</a></li>
         </ul>
+    </li>
+</ul>
+  </div>
+
+  <main class="login-wrapper">
+
+    <div class="login-card">
+      <h2>Login</h2>
+
+      <form action="#" method="POST">
+        <p>
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </p>
+
+        <p>
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </p>
+
+        <div class="form-options">
+          <label><input type="checkbox"> Remember Me</label>
+          <a href="#">Forgot Password?</a>
         </div>
 
-        <main class="login-wrapper">
+        <p>
+          <button type="submit">Log in</button>
+        </p>   
+      </form>
 
+      <p class="signup-prompt">Don't have an account? <a href="#">Register</a></p>
+    </div>
 
-        <div class="login-card">
-            <h2>Login</h2>
+  </main>
 
-            <form action="#" method="POST">
-                <p>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </p>
+  <footer>
+    <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
+  </footer>
 
-                <p>
-                    <label for="password">Password</label>
-                    <input type="password" id="passsword" required>
-
-                    <section class="form-options">
-                        <label><input type="checkbox">Remember Me </label>
-                        <a href="#">Forget Password</a>
-                    </section>
-
-                    <p>
-                        <button type="submit">Log in</button>
-                    </p>   
-                </form>
-
-                <p class="signup-prompt">Don't have an account? <a href="#">Register</a> </p>
-                </div>
-                </main>
-
-                <footer>
-                    <p>&copy; 2026 My Webpage. All rights reserved.</p>
-                </footer>
-            </body>
-        </html>
+</body>
+</html>

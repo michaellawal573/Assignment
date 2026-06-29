@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquee</title>
+    <link rel="icon" href="images/pix.jpg" type="image/jpg">
+    <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0 20px 20px 20px;
+      background-color: #efefef;
+    }
+
+    .page-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: 60px auto 0 auto; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    h1 {
+        color: #c40b0b;
+        font-size: 36px;
+        font-weight: 800;
+        font-style: normal;
+        text-align: center;
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+
+    p {
+        color: #555555;
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 600px; 
+        margin: 0 0 15px 0;
+    }
+    
+    .image-marquee-container {
+        width: 100%;
+        overflow: hidden; 
+        background: #efefef;
+        padding: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    .image-marquee-track {
+        display: flex;
+        width: max-content;
+    }
+
+    .image-marquee-track:hover .image-marquee-group {
+        animation-play-state: paused;
+    }
+
+    .image-marquee-group {
+        display: flex;
+        gap: 20px;
+        padding-right: 20px;
+        animation: scrollImages 20s linear infinite;
+    }
+
+    .image-marquee-group img {
+        width: 200px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 6px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .image-marquee-group img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        cursor: pointer;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 4%;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #efefef; 
+        animation: fadeUp 1s ease;
+    }
+
+    .logo-link {
+        text-decoration: none;
+    }
+
+    .nav-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.25rem;
+        margin: 0;
+        color: #333;
+        animation: fadeLeft 1.2s ease;
+    }
+
+    
+    .nav-title img {
+        border-radius: 50%;
+        animation: floatUpDown 3s ease-in-out infinite;
+    }
+
+    @keyframes floatUpDown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+    }
+
+    .fav-list {
+        display: flex;
+        gap: 12px;                     
+        list-style-type: none;
+        padding: 6px 16px;              
+        margin: 0;
+    }
+
+    .fav-list a {
+        text-decoration: none;
+        color: #444;
+        font-weight: bold;
+        font-size: .85rem;
+        padding: 6px 10px;
+        display: inline-block;
+        transition: .35s;
+        position: relative;
+    }
+
+    .fav-list a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: rgb(196,11,11);
+        transition: .4s;
+    }
+
+    .fav-list a:hover::after {
+        width: 100%;
+    }
+
+    .fav-list a:hover {
+        color: rgb(196,11,11);
+        transform: translateY(-3px);
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 130%;
+        left: 0;
+        min-width: 180px;
+        background: #fff;
+        list-style: none;
+        padding: 8px 0;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        transition: all .35s ease;
+        z-index: 999;
+    }
+
+    .dropdown-menu li {
+        width: 100%;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 10px 18px;
+        color: #444;
+        text-decoration: none;
+        transition: .35s ease;
+    }
+
+    .dropdown-menu a::after {
+        display: none;
+    }
+
+    .dropdown-menu a:hover {
+        background: #f5f5f5;
+        color: rgb(196,11,11);
+        padding-left: 25px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 25px;
+        background: #f9f9f9;
+        border-top: 1px solid #eee;
+        color: #777;
+        margin-top: 60px; 
+        animation: fadeUp 1.5s ease;
+    }
+
+    footer p {
+        margin: 0;
+        color: #777;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="logo-link">
+            <h1 class="nav-title">
+                <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
+                Marquee.
+            </h1>
+        </a>
+
+        <ul class="fav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" target="_tab">About Us</a></li>
+            <li><a href="product.html" target="_tab">Our Product</a></li>
+            <li><a href="marquee.html" target="_tab">Marquee</a></li>
+
+            <li class="dropdown">
+                <a href="#">More ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="form.html" target="_tab">Login</a></li>
+                    <li><a href="service.html" target="_tab">Crypto</a></li>
+                    <li><a href="fcmb.html" target="_tab">FCMB</a></li>
+                    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-wrapper">
+        
+        <h1>M&C Training Academy Images</h1>
+        
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex debitis nesciunt, at magnam quam quis modi delectus impedit hic blanditiis!</p>
+        
+        <div class="image-marquee-container">
+            <div class="image-marquee-track">
+                
+                <div class="image-marquee-group">
+                    <img src="images/agba.jpg" alt="Image 1">
+                    <img src="images/logo.jpg" alt="Image 2">
+                    <img src="images/new.jpg" alt="Image 3">
+                    <img src="images/ogo.jpg" alt="Image 4">
+                    <img src="images/ororo.jpg" alt="Image 5">
+                    <img src="images/particle.jpg" alt="Image 6">
+                    <img src="images/pix.jpg" alt="Image 7">
+                </div>
+                
+                <div class="image-marquee-group" aria-hidden="true">
+                    <img src="images/agba.jpg" alt="Image 1">
+                    <img src="images/logo.jpg" alt="Image 2">
+                    <img src="images/new.jpg" alt="Image 3">
+                    <img src="images/ogo.jpg" alt="Image 4">
+                    <img src="images/ororo.jpg" alt="Image 5">
+                    <img src="images/particle.jpg" alt="Image 6">
+                    <img src="images/pix.jpg" alt="Image 7">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

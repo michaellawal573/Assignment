@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto | M&C Training Academy</title>
+  <link rel="icon" href="images/pix.jpg" type="image/jpg">
+  <style>
+   
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #060b26; 
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 6%;
+      background-color: rgba(6, 11, 38, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-link {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .nav-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .fav-list {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .fav-list a {
+      text-decoration: none;
+      color: #a3b3d8;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .fav-list a:hover,
+    .fav-list a.active {
+      color: #3b82f6;
+    }
+
+
+    .nav-btn {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 10px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .nav-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-section h2 {
+      font-size: 3rem;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-section p {
+      color: #a3b3d8;
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+  
+    .coin-badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .coin-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+
+    .cta-btn {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #1e6bf1;
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 20px rgba(30, 107, 241, 0.4);
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      background-color: #155fd4;
+      transform: scale(1.03);
+    }
+
+   
+    .brand-marquee {
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 0;
+      text-align: center;
+      background-color: rgba(6, 11, 38, 0.4);
+    }
+
+    .brand-marquee p {
+      font-size: 0.9rem;
+      color: #6a7ba2;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+
+    .brand-logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #6a7ba2;
+      opacity: 0.7;
+      letter-spacing: -0.5px;
+    }
+
+    .features-section {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 4%;
+      text-align: center;
+    }
+
+    .features-tag {
+      color: #1e6bf1;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .features-section h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .features-subtitle {
+      color: #a3b3d8;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .feature-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 40px 30px;
+      width: calc(33.333% - 20px);
+      min-width: 300px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(30, 107, 241, 0.3);
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .icon-container {
+      width: 60px;
+      height: 60px;
+      background-color: #1e6bf1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px auto;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 20px rgba(30, 107, 241, 0.3);
+    }
+
+    .feature-card h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .feature-card p {
+      color: #a3b3d8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown > a{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:130%;
+    left:0;
+    min-width:180px;
+    background:#fff;
+    list-style:none;
+    padding:8px 0;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+
+    transition:all .35s ease;
+    z-index:999;
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:10px 18px;
+    color:#444;
+    text-decoration:none;
+    transition:.35s ease;
+}
+
+.dropdown-menu a::after{
+    display:none;
+}
+
+.dropdown-menu a:hover{
+    background:#f5f5f5;
+    color:rgb(196,11,11);
+    padding-left:25px;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #6a7ba2;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="logo-link">
+      <h1 class="nav-title">🌐 Crypto</h1>
+    </a>
+
+    <ul class="fav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" target="_tab">About Us</a></li>
+    <li><a href="service.html" target="_tab">Crypto</a></li>
+    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+
+    <li class="dropdown">
+        <a href="#">More ▾</a>
+
+        <ul class="dropdown-menu">
+            <li><a href="form.html" target="_tab">Login</a></li>
+            <li><a href="product.html" target="_tab">Our Product</a></li>
+            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
+            <li><a href="marquee.html" target="_tab">Marquee</a></li>
+        </ul>
+    </li>
+</ul>
+  </div>
+
+  <header class="hero-section">
+    <h2>Tailwind CSS Template for<br>Crypto, ICO and Web3</h2>
+    <p>Crypto Currency, Blockchain, ICO, Web3 related website template crafted with layout styles. Comes with all essential UI components and pages to launch complete landing pages.</p>
+    
+    <div class="coin-badge-row">
+      <div class="coin-icon">₿</div>
+      <div class="coin-icon">♦</div>
+      <div class="coin-icon">₳</div>
+      <div class="coin-icon">✕</div>
+      <div class="coin-icon">●</div>
+    </div>
+
+    <a href="#" class="cta-btn">Buy Tokens 47% Off</a>
+  </header>
+
+  <section class="brand-marquee">
+    <p>Join the 20,000+ companies using our platform</p>
+    <div class="logo-container">
+      <div class="brand-logo">UIdeck</div>
+      <div class="brand-logo">TailGrids</div>
+      <div class="brand-logo">Lineicons</div>
+      <div class="brand-logo">Ayro UI</div>
+      <div class="brand-logo">PlainAdmin</div>
+    </div>
+  </section>
+
+  <main class="features-section">
+    <span class="features-tag">Crypto Feature</span>
+    <h3>Best Features</h3>
+    <p class="features-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed congue arcu, in et dignissim quam condimentum vel.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-container">🛡️</div>
+        <h4>Safe & Secure</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-container">🎁</div>
+        <h4>Early Bonus</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-container">🔺</div>
+        <h4>Universal Access</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-container">💳</div>
+        <h4>Secure Storage</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-container">📉</div>
+        <h4>Low Cost</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-container">⚙️</div>
+        <h4>Several Profit</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
