@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Product | Training Schedule</title>
   <link rel="icon" href="images/pix.jpg" type="image/jpg">
-  
-  <style>
 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+  <style>
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
@@ -17,503 +19,434 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      animation: fadeUp 1s ease;
+      background-color: #f9fafb;
+      color: #333333;
     }
+
 
     @keyframes fadeUp {
-    from{
-        opacity:0;
-        transform:translateY(40px);
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
-@keyframes fadeLeft {
-    from{
-        opacity:0;
-        transform:translateX(-50px);
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
     }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
 
-@keyframes fadeRight {
-    from{
-        opacity:0;
-        transform:translateX(50px);
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(.94); }
+      to { opacity: 1; transform: scale(1); }
     }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
 
-@keyframes zoomIn {
-    from{
-        opacity:0;
-        transform:scale(.9);
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
 
-@keyframes float {
-    0%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-    100%{
-        transform:translateY(0);
-    }
-}
     .top-bar {
-      display: flex;
-      justify-content: space-between; 
-      align-items: center;           
-      padding: 10px 4%;               
-      background-color: #ffffff;
-      width: 100%;
-    }
-
-    .logo-link {
-      text-decoration: none;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      animation: fadeUp .8s ease;
     }
 
     .nav-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;                     
-      font-size: 1.25rem;           
-      margin: 0;
       color: #333333;
-      animation: fadeleft 1s ease;
+      animation: fadeLeft 1s ease;
+      transition: .3s;
     }
 
-    
-.fav-list{
-    display:flex;
-    gap:12px;
-    list-style:none;
-    background:#fff;
-    padding:6px 20px;
-    margin:0;
-}
-
-.fav-list a{
-    text-decoration:none;
-    color:#444;
-    font-weight:bold;
-    font-size:.85rem;
-    padding:6px 10px;
-    display:inline-block;
-    position:relative;
-    transition:all .35s ease;
-}
-
-.fav-list a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:0;
-    height:2px;
-    background:rgb(196,11,11);
-    transition:width .4s ease;
-}
-
-.fav-list a:hover::after{
-    width:100%;
-}
-
-.fav-list a:hover{
-    color:rgb(196,11,11);
-    transform:translateY(-3px);
-}
-
-.fav-list a.active{
-    color:rgb(196,11,11);
-}
-
-.fav-list a.active::after{
-    width:100%;
-}
-
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown > a{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.dropdown-menu{
-    position:absolute;
-    top:130%;
-    left:0;
-    min-width:180px;
-    background:#fff;
-    list-style:none;
-    padding:8px 0;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(15px);
-
-    transition:all .35s ease;
-    z-index:999;
-}
-
-.dropdown-menu li{
-    width:100%;
-}
-
-.dropdown-menu a{
-    display:block;
-    padding:10px 18px;
-    color:#444;
-    text-decoration:none;
-    transition:.35s ease;
-}
-
-.dropdown-menu a::after{
-    display:none;
-}
-
-.dropdown-menu a:hover{
-    background:#f5f5f5;
-    color:rgb(196,11,11);
-    padding-left:25px;
-}
-
-.dropdown:hover .dropdown-menu{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-
-    .fav-list a.active, 
-    .fav-list a:hover {
-      color: rgb(196, 11, 11);
+    .nav-title:hover {
+      color: rgb(196,11,11);
     }
 
-  .hero-banner-img {
-   width: 100%;
-   height: 400px;
-   object-fit: cover; 
-   display: block;
-   transform: scale(1);
-   transition: transform 5s ease-in-out;
+    .nav-title img {
+      border-radius: 50%;
+      animation: float 3s ease-in-out infinite;
+      transition: .4s;
+    }
 
- }
+    .nav-title img:hover {
+      transform: rotate(360deg) scale(1.15);
+    }
+
+    .fav-list a {
+      text-decoration: none;
+      color: #444444;
+      font-weight: bold;
+      font-size: 0.85rem;           
+      position: relative;
+      transition: .35s;
+    }
+
+    .fav-list a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: rgb(196,11,11);
+      transition: .4s;
+    }
+
+    .fav-list a:hover::after,
+    .fav-list a.active::after {
+      width: 100%;
+    }
+
+    .fav-list a:hover,
+    .fav-list a.active {
+      color: rgb(196,11,11);
+      transform: translateY(-3px);
+    }
+
+    .hero-banner-container {
+      max-height: 380px;
+      overflow: hidden;
+      animation: zoomIn 1s ease;
+    }
+
+    .hero-banner-img {
+      height: 380px;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 5s ease-in-out;
+    }
 
     .hero-banner-container:hover .hero-banner-img {
       transform: scale(1.08);
     }
 
-    .content-wrapper p{
+    .content-wrapper {
       animation: fadeUp 1.1s ease;
     }
 
-    .content-wrapper h2{
-      animation: fadeLeft 1s ease;
+    .badge-pill {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-.content-wrapper ul,
-.content-wrapper ol,
-.terms-list,
-.toolkit-list{
-    animation:fadeUp 1.3s ease;
-}
-
-footer{
-    animation:fadeUp 1.5s ease;
-}
-
-.nav-title img{
-    border-radius:50%;
-    animation:float 3s ease-in-out infinite;
-}
-
-::selection{
-    background:rgb(196,11,11);
-    color:#fff; 
-  }
-
-.nav-title img:hover{
-    transform:rotate(360deg) scale(1.15);
-}
-
-.nav-title{
-    transition:.3s;
-}
-
-.nav-title:hover{
-    color:rgb(196,11,11);
-}
-
-footer{
-    text-align:center;
-    padding:25px;
-    background:#fff;
-    border-top:1px solid #eee;
-    color:#777;
-    animation:fadeUp 1.5s ease;
-}
-
-footer:hover{
-    background:#f3f3f3;
-}
-
-
-    .schedule-table {
-      width: 60%;
-      margin: 15px auto;
-      border-collapse: collapse;
-      text-align: center;
-      font-family: sans-serif;
-      border: #000000;
+    .badge-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .schedule-table th {
-      padding: 10px;
-      font-weight: bold;
-      border:1px solid #000000;
-    }
-
-   
-    .schedule-table td {
-      padding: 12px 8px;
-      font-weight: bold;
-      vertical-align: middle;
-      border: 1px solid #000000;
+    ::selection {
+      background: rgb(196,11,11);
+      color: #fff;
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
 
-  <div class="top-bar">
-    <a href="index.html" class="logo-link">
-      <h1 class="nav-title">
-        <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
-        Our Product.
-      </h1>
-    </a>
+  
+  <nav class="top-bar bg-white border-b border-gray-200 px-4 sm:px-8 py-3">
+    <div class="flex flex-wrap items-center justify-between mx-auto max-w-7xl">
+      
+      <a href="index.html" class="logo-link flex items-center">
+        <h1 class="nav-title text-xl font-bold flex items-center gap-2 sm:gap-3">
+          <img src="images/pix.jpg" width="45" height="45" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover" alt="Logo"/> 
+          <span>Our Product.</span>
+        </h1>
+      </a>
 
-<ul class="fav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html" target="_tab">About Us</a></li>
-    <li><a href="product.html" target="_tab">Our Product</a></li>
-    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+      <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
 
-    <li class="dropdown">
-        <a href="#">More ▾</a>
-
-        <ul class="dropdown-menu">
-            <li><a href="form.html" target="_tab">Login</a></li>
-            <li><a href="service.html" target="_tab">Crypto</a></li>
-            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
-            <li><a href="marquee.html" target="_tab">Marquee</a></li>
-        </ul>
-    </li>
-</ul>
-  </div>
-
-  <div class="hero-banner-container">
-    <img src="images/particle.jpg" alt="herobanner" class="hero-banner-img"/>
-  </div>
-
-  <main>
     
-    <div style="text-align: center; margin: 20px 0;">
-      <h2 style="color: black; font-size: 22px; letter-spacing: 1px; font-family: sans-serif;">JUNE 2026 M&C TRAINING TIME-TABLE</h2>
+      <div class="hidden w-full lg:block lg:w-auto mt-4 lg:mt-0" id="navbar-dropdown">
+        <ul class="fav-list flex flex-col lg:flex-row items-start lg:items-center gap-3 lg:gap-4 font-bold text-sm bg-white p-4 lg:p-0 rounded-lg border lg:border-0 border-gray-100">
+          <li><a href="index.html" class="block py-2 px-1">Home</a></li>
+          <li><a href="about.html" target="_tab" class="block py-2 px-1">About Us</a></li>
+          <li><a href="product.html" target="_tab" class="block py-2 px-1 active">Our Product</a></li>
+          <li><a href="contact.html" target="_tab" class="block py-2 px-1">Contact Us</a></li>
+
+          
+          <li class="w-full lg:w-auto">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-1 text-[#444444] hover:text-[rgb(196,11,11)] font-bold text-sm">
+                More ▾
+              </button>
+              
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-44">
+                  <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                    <li><a href="form.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">Login</a></li>
+                    <li><a href="service.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">Crypto</a></li>
+                    <li><a href="fcmb.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">FCMB</a></li>
+                  </ul>
+              </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
-    <table class="schedule-table">
+  </nav>
+
+  
+  <div class="hero-banner-container w-full relative">
+    <img src="images/particle.jpg" alt="herobanner" class="hero-banner-img w-full"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 flex flex-col items-center justify-center text-center px-4">
+      <span class="bg-[rgb(196,11,11)] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">Academic Timetable</span>
+      <h2 class="text-white text-3xl sm:text-5xl font-extrabold tracking-tight uppercase">Training Schedule</h2>
+      <p class="text-gray-200 text-sm sm:text-base max-w-xl mt-2 font-light">Explore classroom availability, room allocations, and course schedules across all sessions.</p>
+    </div>
+  </div>
+
+  
+  <main class="content-wrapper max-w-6xl mx-auto px-4 sm:px-6 my-10 space-y-12">
+
+    
+    <section class="bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden p-6 sm:p-8">
       
-        <tr>
-          <th rowspan="2">Days</th>
-          <th rowspan="2">Venue</th>
-          <th>Morning Session</th>
-          <th>Afternoon Session</th>
-          <th>Evening Session</th>
-        </tr>
-        <tr>
-          <th>9:00am-12:00pm</th>
-          <th>12:00pm-3:00pm</th>
-          <th>3:00pm-5:30pm</th>
-        </tr>
-      
-        <tr>
-          <td rowspan="2">Monday</td>
-          <td>Room 1</td>
-          <td><span style="background: blue; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Power-Bi</span></td>
-          <td><span style="background: #e0b0ff; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
-          <td><span style="background: yellow; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td><span style="background: black; color: white; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER C</span></td>
-          <td><span style="background: rgb(69, 228, 69); color: black; padding: 2px 6px; border-radius: 4px;">python syntax</span>  <br /> <span style="background: red; color: white; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
+      <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-100 pb-6 mb-6 gap-4">
+        <div>
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-8 bg-[rgb(196,11,11)] rounded-full"></div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-wide uppercase">JUNE 2026 M&C TRAINING TIME-TABLE</h2>
+          </div>
+          <p class="text-xs text-gray-500 mt-1 pl-6">Room allocations for Morning, Afternoon, and Evening tracks.</p>
+        </div>
 
-        <tr>
-          <td rowspan="2">Tuesday</td>
-          <td>Room 1</td>
-          <td><span style="background: blue; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Power-Bi</span></td>
-          <td>Javascript</td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td><span style="background: cyan; color: black; padding: 2px 6px; border-radius: 4px; font-weight: bold;">BASIC COMPUTER B</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-
-        <tr>
-          <td rowspan="2">Wednesday</td>
-          <td>Room 1</td>
-          <td><span style="background: #e0b0ff; color: black; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
-          <td>Javascript</td>
-          <td><span style="background: yellow; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td><span style="background: black; color: white; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER C</span></td>
-          <td><span style="background: rgb(69, 228, 69); color: black; padding: 2px 6px; border-radius: 4px;">python syntax</span>  <br /> <span style="background: red; color: white; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-
-        <tr>
-          <td rowspan="2">Thursday</td>
-          <td>Room 1</td>
-          <td><span style="background: blue; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Power-Bi</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td><span style="background: cyan; color: black; padding: 2px 6px; border-radius: 4px; font-weight: bold;">BASIC COMPUTER B</span></td>
-          <td><span style="background: rgb(69, 228, 69); color: black; padding: 2px 6px; border-radius: 4px;">python syntax</span>  <br /> <span style="background: red; color: white; padding: 2px 6px; border-radius: 4px;">Graphic Design</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-
-        <tr>
-          <td rowspan="2">Friday</td>
-          <td>Room 1</td>
-          <td><span style="background: #e0b0ff; padding: 2px 6px; border-radius: 4px;">CSS3 & Tailwind CSS</span></td>
-          <td>Javascript</td>
-          <td><span style="background:yellow; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER A</span></td>
-        </tr>
-        <tr>
-          <td>Room 2</td>
-          <td><span style="background:black; color: white; padding: 2px 6px; border-radius: 4px;">BASIC COMPUTER C</span><br><span style="background:cyan; color: black; padding: 2px 6px; border-radius: 4px; font-weight: bold;">BASIC COMPUTER B</span></td>
-          <td style="color: red; font-weight: bold;">X</td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-
-        <tr>
-          <td>Saturday</td>
-          <td>Room 1</td>
-          <td style="color: red; font-weight: bold;">X</td>
-          <td style="color: red; font-weight: bold;">X</td>
-          <td style="color: red; font-weight: bold;">X</td>
-        </tr>
-
-        </table>
-
-  </main> <br /><br />
-
-   <table border="4" style="text-align: center; font-family:san-serif; font-weight: bold;">
-            <tr>
-                <th colspan="6"> Time Table</th>
-                 </tr>
-
-                 <style>
-                            table{
-                                margin: 0px auto;
-                                border: 1px solid black;
-                                border-collapse: collapse;
-                                position: relative;
-                                overflow-x: auto;
-                                width: 700px;
-                            }
-
-                            td, th{
-                                border: 1px solid black;
-                                padding: 30px;
         
-                            }
+        <div class="flex flex-wrap gap-2 text-xs font-semibold">
+          <span class="bg-blue-600 text-white px-2.5 py-1 rounded-md">Power-BI</span>
+          <span class="bg-purple-200 text-purple-900 px-2.5 py-1 rounded-md">CSS3 & Tailwind</span>
+          <span class="bg-yellow-300 text-yellow-900 px-2.5 py-1 rounded-md">Basic Comp A</span>
+          <span class="bg-black text-white px-2.5 py-1 rounded-md">Basic Comp C</span>
+          <span class="bg-cyan-300 text-cyan-900 px-2.5 py-1 rounded-md">Basic Comp B</span>
+          <span class="bg-emerald-400 text-emerald-950 px-2.5 py-1 rounded-md">Python</span>
+          <span class="bg-red-600 text-white px-2.5 py-1 rounded-md">Graphic Design</span>
+        </div>
+      </div>
 
-                            tr#header{
-                                background: black;
-                                color: white;
-                            }
-                    
-                            </style>
-                 <tr>
-                    <td rowspan="7"> Hours</td>
-                    <td> Mon </td>
-                    <td> Tue </td>
-                    <td> Wed </td>
-                    <td> Thur </td>
-                    <td> Fri </td>
-                 </tr>
+      
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm text-center text-gray-700 border-collapse">
+          <thead class="text-xs text-gray-900 uppercase bg-gray-100 border-b border-gray-200 font-bold">
+            <tr>
+              <th scope="col" class="px-4 py-3.5 border-r border-gray-200" rowspan="2">Day</th>
+              <th scope="col" class="px-4 py-3.5 border-r border-gray-200" rowspan="2">Venue</th>
+              <th scope="col" class="px-4 py-2 border-r border-gray-200">Morning Session</th>
+              <th scope="col" class="px-4 py-2 border-r border-gray-200">Afternoon Session</th>
+              <th scope="col" class="px-4 py-2">Evening Session</th>
+            </tr>
+            <tr class="bg-gray-50 border-t border-gray-200 text-gray-500">
+              <th scope="col" class="px-4 py-2 border-r border-gray-200 text-xs">9:00am - 12:00pm</th>
+              <th scope="col" class="px-4 py-2 border-r border-gray-200 text-xs">12:00pm - 3:00pm</th>
+              <th scope="col" class="px-4 py-2 text-xs">3:00pm - 5:30pm</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 bg-white font-medium">
+            
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50" rowspan="2">Monday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Power-BI</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-purple-200 text-purple-900 text-xs font-semibold px-3 py-1 rounded-lg">CSS3 & Tailwind CSS</span>
+              </td>
+              <td class="px-4 py-3">
+                <span class="badge-pill inline-block bg-yellow-300 text-yellow-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER A</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition border-b border-gray-200">
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 2</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER C</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 space-y-1">
+                <span class="badge-pill inline-block bg-emerald-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-lg">Python Syntax</span><br/>
+                <span class="badge-pill inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Graphic Design</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-                 <tr>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Arts </td>
-                 </tr>
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50" rowspan="2">Tuesday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Power-BI</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 font-semibold text-gray-800">JavaScript</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition border-b border-gray-200">
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 2</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-cyan-300 text-cyan-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER B</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40 border-r border-gray-200">X</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-                 <tr>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Arts </td>
-                 </tr>
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50" rowspan="2">Wednesday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-purple-200 text-purple-900 text-xs font-semibold px-3 py-1 rounded-lg">CSS3 & Tailwind CSS</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 font-semibold text-gray-800">JavaScript</td>
+              <td class="px-4 py-3">
+                <span class="badge-pill inline-block bg-yellow-300 text-yellow-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER A</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition border-b border-gray-200">
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 2</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER C</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 space-y-1">
+                <span class="badge-pill inline-block bg-emerald-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-lg">Python Syntax</span><br/>
+                <span class="badge-pill inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Graphic Design</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-                 <tr>
-                    <td colspan="5"> Lunch </td>
-                 </tr>
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50" rowspan="2">Thursday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Power-BI</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40 border-r border-gray-200">X</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition border-b border-gray-200">
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 2</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-cyan-300 text-cyan-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER B</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 space-y-1">
+                <span class="badge-pill inline-block bg-emerald-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-lg">Python Syntax</span><br/>
+                <span class="badge-pill inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-lg">Graphic Design</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-                 <tr>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td rowspan="2"> Project </td> 
-                 </tr>
+        
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50" rowspan="2">Friday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 border-r border-gray-200">
+                <span class="badge-pill inline-block bg-purple-200 text-purple-900 text-xs font-semibold px-3 py-1 rounded-lg">CSS3 & Tailwind CSS</span>
+              </td>
+              <td class="px-4 py-3 border-r border-gray-200 font-semibold text-gray-800">JavaScript</td>
+              <td class="px-4 py-3">
+                <span class="badge-pill inline-block bg-yellow-300 text-yellow-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER A</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition border-b border-gray-200">
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 2</td>
+              <td class="px-4 py-3 border-r border-gray-200 space-y-1">
+                <span class="badge-pill inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER C</span><br/>
+                <span class="badge-pill inline-block bg-cyan-300 text-cyan-950 text-xs font-bold px-3 py-1 rounded-lg">BASIC COMPUTER B</span>
+              </td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40 border-r border-gray-200">X</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-                 <tr>
-                    <td> Science </td>
-                    <td> Maths </td>
-                    <td> Science </td>
-                    <td> Maths </td>
-                 </tr>
-                 </table>
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-4 py-3 font-bold text-gray-900 border-r border-gray-200 bg-gray-50/50">Saturday</td>
+              <td class="px-4 py-3 border-r border-gray-200 text-xs font-semibold text-gray-500">Room 1</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40 border-r border-gray-200">X</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40 border-r border-gray-200">X</td>
+              <td class="px-4 py-3 font-bold text-red-600 bg-red-50/40">X</td>
+            </tr>
 
-  <footer>
-    <p style="text-align: center; margin-top: 40px; padding: 20px; font-family: sans-serif;">&copy; 2026 M&C Training Academy. All rights reserved.</p>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    
+    <section class="bg-white rounded-3xl border border-gray-200 shadow-xl overflow-hidden p-6 sm:p-8">
+      
+      <div class="flex items-center gap-3 border-b border-gray-100 pb-4 mb-6">
+        <div class="w-3 h-8 bg-[rgb(196,11,11)] rounded-full"></div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-wide uppercase">General Weekly Overview</h2>
+          <p class="text-xs text-gray-500 mt-0.5">Subject distribution throughout the academic week.</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm text-center text-gray-800 border-collapse">
+          <thead class="text-xs uppercase bg-gray-900 text-white font-bold tracking-wider">
+            <tr>
+              <th scope="col" class="px-6 py-4 border-r border-gray-800" rowspan="2">Hours</th>
+              <th scope="col" class="px-6 py-4 border-r border-gray-800">Mon</th>
+              <th scope="col" class="px-6 py-4 border-r border-gray-800">Tue</th>
+              <th scope="col" class="px-6 py-4 border-r border-gray-800">Wed</th>
+              <th scope="col" class="px-6 py-4 border-r border-gray-800">Thur</th>
+              <th scope="col" class="px-6 py-4">Fri</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 bg-white font-semibold">
+            
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4 font-bold text-gray-900 border-r border-gray-200 bg-gray-50" rowspan="2">Morning Track</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 text-emerald-700">Arts</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition border-b-2 border-gray-200">
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 text-emerald-700">Arts</td>
+            </tr>
+
+          
+            <tr class="bg-amber-50/80 text-amber-900 font-bold tracking-widest uppercase">
+              <td class="px-6 py-3.5 border-r border-amber-200/80 text-xs">Break</td>
+              <td class="px-6 py-3.5" colspan="5"> Lunch & Recess Interval</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4 font-bold text-gray-900 border-r border-gray-200 bg-gray-50" rowspan="2">Afternoon Track</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 bg-red-50 text-[rgb(196,11,11)] font-extrabold" rowspan="2">Project Work</td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-blue-700">Science</td>
+              <td class="px-6 py-4 border-r border-gray-200 text-purple-700">Maths</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  
+  <footer class="bg-white text-center p-6 border-t border-gray-200 text-gray-500 text-sm">
+    <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
   </footer>
 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

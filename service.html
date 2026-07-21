@@ -5,427 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto | M&C Training Academy</title>
   <link rel="icon" href="images/pix.jpg" type="image/jpg">
-  <style>
-   
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
 
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: #060b26; 
-      color: #ffffff;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js" defer></script>
+</head>
+<body class="bg-[#060b26] text-white font-sans overflow-x-hidden leading-relaxed">
 
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 6%;
-      background-color: rgba(6, 11, 38, 0.9);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  <nav class="top-bar sticky top-0 z-[1000] bg-[#060b26]/90 backdrop-blur-md border-b border-white/[0.08] px-[4%] py-[15px] md:py-[20px]">
+    <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between">
+      
+      <a href="index.html" class="logo-link text-white no-underline">
+        <h1 class="nav-title flex items-center gap-[10px] text-[1.25rem] sm:text-[1.5rem] font-bold">🌐 Crypto</h1>
+      </a>
 
-    .logo-link {
-      text-decoration: none;
-      color: #ffffff;
-    }
-
-    .nav-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .fav-list {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .fav-list a {
-      text-decoration: none;
-      color: #a3b3d8;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-
-    .fav-list a:hover,
-    .fav-list a.active {
-      color: #3b82f6;
-    }
+      
+      <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
 
 
-    .nav-btn {
-      background-color: rgba(255, 255, 255, 0.08);
-      padding: 10px 24px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: background-color 0.3s;
-    }
+      <div class="hidden w-full md:block md:w-auto mt-4 md:mt-0" id="navbar-dropdown">
+        <ul class="fav-list flex flex-col md:flex-row md:items-center gap-[16px] md:gap-[24px] list-none p-4 md:p-0 bg-[#0c143d] md:bg-transparent rounded-xl md:rounded-none">
+          <li><a href="index.html" class="block text-[#a3b3d8] hover:text-[#3b82f6] font-semibold text-[0.95rem] no-underline transition-colors duration-300">Home</a></li>
+          <li><a href="about.html" target="_tab" class="block text-[#a3b3d8] hover:text-[#3b82f6] font-semibold text-[0.95rem] no-underline transition-colors duration-300">About Us</a></li>
+          <li><a href="service.html" target="_tab" class="block text-[#a3b3d8] hover:text-[#3b82f6] font-semibold text-[0.95rem] no-underline transition-colors duration-300">Crypto</a></li>
+          <li><a href="contact.html" target="_tab" class="block text-[#a3b3d8] hover:text-[#3b82f6] font-semibold text-[0.95rem] no-underline transition-colors duration-300">Contact Us</a></li>
 
-    .nav-btn:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+          
+          <li class="dropdown relative">
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full md:w-auto text-[#a3b3d8] hover:text-[#3b82f6] font-semibold text-[0.95rem] transition-colors duration-300">
+              More 
+              <svg class="w-2.5 h-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 m1 4 4 4-4"/>
+              </svg>
+            </button>
 
-    
-    .hero-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 20px 80px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+            <div id="dropdownNavbar" class="z-[999] hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-44">
+              <ul class="py-2 text-sm text-gray-700 list-none" aria-labelledby="dropdownNavbarLink">
+                <li><a href="form.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)] transition-all">Login</a></li>
+                <li><a href="product.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)] transition-all">Our Product</a></li>
+                <li><a href="fcmb.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)] transition-all">FCMB</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-    .hero-section h2 {
-      font-size: 3rem;
-      line-height: 1.2;
-      font-weight: 800;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-section p {
-      color: #a3b3d8;
-      font-size: 1.15rem;
-      max-width: 650px;
-      margin-bottom: 35px;
-    }
+    </div>
+  </nav>
 
   
-    .coin-badge-row {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 35px;
-    }
-
-    .coin-icon {
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-
-    .cta-btn {
-      display: inline-block;
-      text-decoration: none;
-      background-color: #1e6bf1;
-      color: #ffffff;
-      padding: 14px 32px;
-      border-radius: 25px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 20px rgba(30, 107, 241, 0.4);
-      transition: background-color 0.2s, transform 0.2s;
-    }
-
-    .cta-btn:hover {
-      background-color: #155fd4;
-      transform: scale(1.03);
-    }
-
-   
-    .brand-marquee {
-      width: 100%;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 40px 0;
-      text-align: center;
-      background-color: rgba(6, 11, 38, 0.4);
-    }
-
-    .brand-marquee p {
-      font-size: 0.9rem;
-      color: #6a7ba2;
-      font-weight: 600;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      flex-wrap: wrap;
-      padding: 0 20px;
-    }
-
-    .brand-logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #6a7ba2;
-      opacity: 0.7;
-      letter-spacing: -0.5px;
-    }
-
-    .features-section {
-      max-width: 1200px;
-      margin: 100px auto;
-      padding: 0 4%;
-      text-align: center;
-    }
-
-    .features-tag {
-      color: #1e6bf1;
-      font-size: 0.9rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .features-section h3 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    .features-subtitle {
-      color: #a3b3d8;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto 60px auto;
-    }
-
-    .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .feature-card {
-      background-color: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 40px 30px;
-      width: calc(33.333% - 20px);
-      min-width: 300px;
-      text-align: center;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(30, 107, 241, 0.3);
-      background-color: rgba(255, 255, 255, 0.03);
-    }
-
-    .icon-container {
-      width: 60px;
-      height: 60px;
-      background-color: #1e6bf1;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 25px auto;
-      font-size: 1.6rem;
-      box-shadow: 0 8px 20px rgba(30, 107, 241, 0.3);
-    }
-
-    .feature-card h4 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #ffffff;
-    }
-
-    .feature-card p {
-      color: #a3b3d8;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown > a{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.dropdown-menu{
-    position:absolute;
-    top:130%;
-    left:0;
-    min-width:180px;
-    background:#fff;
-    list-style:none;
-    padding:8px 0;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(15px);
-
-    transition:all .35s ease;
-    z-index:999;
-}
-
-.dropdown-menu li{
-    width:100%;
-}
-
-.dropdown-menu a{
-    display:block;
-    padding:10px 18px;
-    color:#444;
-    text-decoration:none;
-    transition:.35s ease;
-}
-
-.dropdown-menu a::after{
-    display:none;
-}
-
-.dropdown-menu a:hover{
-    background:#f5f5f5;
-    color:rgb(196,11,11);
-    padding-left:25px;
-}
-
-.dropdown:hover .dropdown-menu{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: #6a7ba2;
-      font-size: 0.9rem;
-      margin-top: 60px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="top-bar">
-    <a href="index.html" class="logo-link">
-      <h1 class="nav-title">🌐 Crypto</h1>
-    </a>
-
-    <ul class="fav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html" target="_tab">About Us</a></li>
-    <li><a href="service.html" target="_tab">Crypto</a></li>
-    <li><a href="contact.html" target="_tab">Contact Us</a></li>
-
-    <li class="dropdown">
-        <a href="#">More ▾</a>
-
-        <ul class="dropdown-menu">
-            <li><a href="form.html" target="_tab">Login</a></li>
-            <li><a href="product.html" target="_tab">Our Product</a></li>
-            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
-            <li><a href="marquee.html" target="_tab">Marquee</a></li>
-        </ul>
-    </li>
-</ul>
-  </div>
-
-  <header class="hero-section">
-    <h2>Tailwind CSS Template for<br>Crypto, ICO and Web3</h2>
-    <p>Crypto Currency, Blockchain, ICO, Web3 related website template crafted with layout styles. Comes with all essential UI components and pages to launch complete landing pages.</p>
+  <header class="hero-section flex flex-col items-center justify-center text-center pt-[60px] sm:pt-[100px] pb-[60px] sm:pb-[80px] px-[20px] max-w-[900px] mx-auto">
+    <h2 class="text-[2rem] sm:text-[3rem] leading-[1.2] font-[800] mb-[20px] tracking-[-0.5px]">
+      Tailwind CSS Template for<br class="hidden sm:inline"> Crypto, ICO and Web3
+    </h2>
+    <p class="text-[#a3b3d8] text-[0.95rem] sm:text-[1.15rem] max-w-[650px] mb-[35px]">
+      Crypto Currency, Blockchain, ICO, Web3 related website template crafted with layout styles. Comes with all essential UI components and pages to launch complete landing pages.
+    </p>
     
-    <div class="coin-badge-row">
-      <div class="coin-icon">₿</div>
-      <div class="coin-icon">♦</div>
-      <div class="coin-icon">₳</div>
-      <div class="coin-icon">✕</div>
-      <div class="coin-icon">●</div>
+    <div class="coin-badge-row flex flex-wrap justify-center gap-[10px] sm:gap-[15px] mb-[35px]">
+      <div class="coin-icon w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] bg-white/10 rounded-full flex items-center justify-center text-[1rem] sm:text-[1.2rem] border border-white/15">₿</div>
+      <div class="coin-icon w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] bg-white/10 rounded-full flex items-center justify-center text-[1rem] sm:text-[1.2rem] border border-white/15">♦</div>
+      <div class="coin-icon w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] bg-white/10 rounded-full flex items-center justify-center text-[1rem] sm:text-[1.2rem] border border-white/15">₳</div>
+      <div class="coin-icon w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] bg-white/10 rounded-full flex items-center justify-center text-[1rem] sm:text-[1.2rem] border border-white/15">✕</div>
+      <div class="coin-icon w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] bg-white/10 rounded-full flex items-center justify-center text-[1rem] sm:text-[1.2rem] border border-white/15">●</div>
     </div>
 
-    <a href="#" class="cta-btn">Buy Tokens 47% Off</a>
+    <a href="#" class="cta-btn inline-block no-underline bg-[#1e6bf1] text-white px-[28px] sm:px-[32px] py-[12px] sm:py-[14px] rounded-[25px] font-bold text-[0.9rem] sm:text-[0.95rem] shadow-[0_4px_20px_rgba(30,107,241,0.4)] hover:bg-[#155fd4] hover:scale-[1.03] transition-all duration-200">
+      Buy Tokens 47% Off
+    </a>
   </header>
 
-  <section class="brand-marquee">
-    <p>Join the 20,000+ companies using our platform</p>
-    <div class="logo-container">
-      <div class="brand-logo">UIdeck</div>
-      <div class="brand-logo">TailGrids</div>
-      <div class="brand-logo">Lineicons</div>
-      <div class="brand-logo">Ayro UI</div>
-      <div class="brand-logo">PlainAdmin</div>
+  
+  <section class="brand-marquee w-full border-t border-b border-white/[0.08] py-[30px] sm:py-[40px] text-center bg-[#060b26]/40">
+    <p class="text-[0.8rem] sm:text-[0.9rem] text-[#6a7ba2] font-semibold mb-[20px] sm:mb-[25px] uppercase tracking-[1px] px-[15px]">
+      Join the 20,000+ companies using our platform
+    </p>
+    <div class="logo-container flex justify-center items-center gap-[20px] sm:gap-[50px] flex-wrap px-[20px]">
+      <div class="brand-logo text-[1.1rem] sm:text-[1.4rem] font-bold text-[#6a7ba2] opacity-70 tracking-[-0.5px]">UIdeck</div>
+      <div class="brand-logo text-[1.1rem] sm:text-[1.4rem] font-bold text-[#6a7ba2] opacity-70 tracking-[-0.5px]">TailGrids</div>
+      <div class="brand-logo text-[1.1rem] sm:text-[1.4rem] font-bold text-[#6a7ba2] opacity-70 tracking-[-0.5px]">Lineicons</div>
+      <div class="brand-logo text-[1.1rem] sm:text-[1.4rem] font-bold text-[#6a7ba2] opacity-70 tracking-[-0.5px]">Ayro UI</div>
+      <div class="brand-logo text-[1.1rem] sm:text-[1.4rem] font-bold text-[#6a7ba2] opacity-70 tracking-[-0.5px]">PlainAdmin</div>
     </div>
   </section>
 
-  <main class="features-section">
-    <span class="features-tag">Crypto Feature</span>
-    <h3>Best Features</h3>
-    <p class="features-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed congue arcu, in et dignissim quam condimentum vel.</p>
+  
+  <main class="features-section max-w-[1200px] my-[60px] sm:my-[100px] mx-auto px-[4%] text-center">
+    <span class="features-tag text-[#1e6bf1] text-[0.85rem] sm:text-[0.9rem] font-bold uppercase tracking-[1.5px] block mb-[10px]">Crypto Feature</span>
+    <h3 class="text-[1.8rem] sm:text-[2.2rem] font-[800] mb-[15px]">Best Features</h3>
+    <p class="features-subtitle text-[#a3b3d8] text-[0.95rem] sm:text-[1.05rem] max-w-[600px] mx-auto mb-[40px] sm:mb-[60px]">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed congue arcu, in et dignissim quam condimentum vel.
+    </p>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon-container">🛡️</div>
-        <h4>Safe & Secure</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+    
+    <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] sm:gap-[30px] justify-center">
+      
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">🛡️</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Safe & Secure</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="icon-container">🎁</div>
-        <h4>Early Bonus</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">🎁</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Early Bonus</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="icon-container">🔺</div>
-        <h4>Universal Access</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">🔺</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Universal Access</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="icon-container">💳</div>
-        <h4>Secure Storage</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">💳</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Secure Storage</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="icon-container">📉</div>
-        <h4>Low Cost</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">📉</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Low Cost</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
 
-      <div class="feature-card">
-        <div class="icon-container">⚙️</div>
-        <h4>Several Profit</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
+      <div class="feature-card bg-white/[0.02] border border-white/[0.05] rounded-[16px] px-[24px] sm:px-[30px] py-[32px] sm:py-[40px] text-center transition-all duration-300 hover:-translate-y-[8px] hover:border-[#1e6bf1]/30 hover:bg-white/[0.03]">
+        <div class="icon-container w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] bg-[#1e6bf1] rounded-full flex items-center justify-center mx-auto mb-[20px] sm:mb-[25px] text-[1.4rem] sm:text-[1.6rem] shadow-[0_8px_20px_rgba(30,107,241,0.3)]">⚙️</div>
+        <h4 class="text-[1.2rem] sm:text-[1.3rem] font-[700] mb-[12px] sm:mb-[15px] text-white">Several Profit</h4>
+        <p class="text-[#a3b3d8] text-[0.9rem] sm:text-[0.95rem] leading-[1.6]">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor labore dolore magna aliqua.</p>
       </div>
+
     </div>
   </main>
 
-  <footer>
+  <footer class="text-center py-[30px] sm:py-[40px] px-[20px] border-t border-white/[0.05] text-[#6a7ba2] text-[0.85rem] sm:text-[0.9rem] mt-[40px] sm:mt-[60px]">
     <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
   </footer>
 

@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | M&C Training Academy</title>
   <link rel="icon" href="images/pix.jpg" type="image/jpg">
-  
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
   <style>
-  
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
@@ -17,90 +19,56 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background-color: #f9fafb;
+      color: #333333;
     }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
+        @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
-@keyframes fadeLeft{
-    from{
-        opacity:0;
-        transform:translateX(-50px);
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
     }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
 
-@keyframes zoomIn{
-    from{
-        opacity:0;
-        transform:scale(.92);
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(.92); }
+      to { opacity: 1; transform: scale(1); }
     }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
 
-@keyframes float{
-    0%{
-        transform:translateY(0);
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
-    50%{
-        transform:translateY(-6px);
-    }
-    100%{
-        transform:translateY(0);
-    }
-}
 
-.top-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:10px 4%;
-    background:#fff;
-    width:100%;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 12px rgba(0,0,0,.08);
-    animation:fadeUp .8s ease;
-}
-
-    .logo-link {
-      text-decoration: none;
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      animation: fadeUp .8s ease;
     }
 
     .nav-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;                    
-      font-size: 1.25rem;            
-      margin: 0;
       color: #333333;
       animation: fadeLeft 1s ease;
+      transition: .3s;
     }
 
+    .nav-title:hover {
+      color: rgb(196,11,11);
+    }
 
-    .fav-list {
-      display: flex;
-      gap: 12px;                     
-      list-style-type: none;
-      background-color: white;
-      padding: 6px 16px;              
-      margin: 0;
+    .nav-title img {
+      border-radius: 50%;
+      animation: float 3s ease-in-out infinite;
+      transition: .4s;
+    }
+
+    .nav-title img:hover {
+      transform: rotate(360deg) scale(1.15);
     }
 
     .fav-list a {
@@ -108,373 +76,297 @@
       color: #444444;
       font-weight: bold;
       font-size: 0.85rem;           
-      padding: 4px 6px;
-      display: inline-block;
       position: relative;
       transition: .35s;
     }
 
-    .fav-list a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:0;
-    height:2px;
-    background:rgb(196,11,11);
-    transition:.4s;
-}
-
-.fav-list a:hover::after{
-    width:100%;
-}
-
-.fav-list a:hover{
-    color:rgb(196,11,11);
-    transform:translateY(-3px);
-}
-
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown > a{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.dropdown-menu{
-    position:absolute;
-    top:130%;
-    left:0;
-    min-width:180px;
-    background:#fff;
-    list-style:none;
-    padding:8px 0;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(15px);
-
-    transition:all .35s ease;
-    z-index:999;
-}
-
-.dropdown-menu li{
-    width:100%;
-}
-
-.dropdown-menu a{
-    display:block;
-    padding:10px 18px;
-    color:#444;
-    text-decoration:none;
-    transition:.35s ease;
-}
-
-.dropdown-menu a::after{
-    display:none;
-}
-
-.dropdown-menu a:hover{
-    background:#f5f5f5;
-    color:rgb(196,11,11);
-    padding-left:25px;
-}
-
-.dropdown:hover .dropdown-menu{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-}
-
-.content-wrapper ul,
-.content-wrapper ol,
-.terms-list,
-.toolkit-list{
-    animation:fadeUp 1.3s ease;
-}
-
-footer{
-    animation:fadeUp 1.5s ease;
-}
-
-/* Logo hover */
-.nav-title img{
-    transition:.4s;
-}
-
-.nav-title img:hover{
-    transform:rotate(360deg) scale(1.15);
-}
-
-/* About title hover */
-.nav-title{
-    transition:.3s;
-}
-
-.nav-title:hover{
-    color:rgb(196,11,11);
-}
-
-mark{
-    transition:.4s;
-}
-
-mark:hover{
-    background:rgb(196,11,11);
-    color:#fff;
-}
-
-strong{
-    transition:.3s;
-}
-
-strong:hover{
-    color:rgb(196,11,11);
-}
-
-.terms-list dd{
-    transition:.3s;
-}
-
-.terms-list dd:hover{
-    padding-left:10px;
-    color:#222;
-}
-
-button{
-    transition:.3s ease;
-}
-footer:hover{
-    background:#f3f3f3;
-}
-
-    .fav-list a.active, 
-    .fav-list a:hover {
-      color: rgb(196, 11, 11);
-    }
-
-    .hero-banner-container{
-    width:100%;
-    max-height:400px;
-    overflow:hidden;
-}
-
-.hero-banner-img{
-    width:100%;
-    height:400px;
-    object-fit:cover;
-    display:block;
-    transform: scale(1);
-    transition:transform 5s ease-in-out;
-}
-
-.hero-banner-container:hover .hero-banner-img{
-    transform:scale(1.1);
-}
-
-    .content-wrapper {
-      width: 85%;
-      max-width: 800px;
-      margin: 40px auto 60px auto; 
-      color: #333333;
-      animation: fadeUp 1.2s ease;
-    }
-
-    .content-wrapper h2 {
-      color: rgb(196, 11, 11);
-      font-size: 1.6rem;
-      margin-top: 35px;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #f0f0f0;
-      padding-bottom: 5px;
+    .fav-list a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: rgb(196,11,11);
       transition: .4s;
     }
 
-    .content-wrapper h2:hover {
-      padding-left: 10px;
-      border-color: rgb(196, 11, 11);
+    .fav-list a:hover::after,
+    .fav-list a.active::after {
+      width: 100%;
     }
 
-    .content-wrapper p {
-      font-size: 1.05rem;
-      margin-bottom: 15px;
-      line-height: 1.8;
-      transition: .3s;
+    .fav-list a:hover,
+    .fav-list a.active {
+      color: rgb(196,11,11);
+      transform: translateY(-3px);
     }
 
-    .content-wrapper p:hover{
-      color: #111111;
+    .hero-banner-container {
+      max-height: 380px;
+      overflow: hidden;
+      animation: zoomIn 1.1s ease;
     }
 
-   
-    .content-wrapper ul, 
-    .content-wrapper ol {
-      padding-left: 20px;
-      margin-bottom: 20px;
+    .hero-banner-img {
+      height: 380px;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 5s ease-in-out;
     }
 
-
-    .content-wrapper li{
-    margin-bottom:8px;
-    transition:.3s;
-}
-
-.content-wrapper li:hover{
-    color:rgb(196,11,11);
-    transform:translateX(8px);
-}
-
-.terms-list dt{
-    font-size:1.1rem;
-    margin-top:15px;
-    color:#111;
-    transition:.3s;
-}
-
-.terms-list dt:hover{
-    color:rgb(196,11,11);
-}
-
-.terms-list dd{
-    margin-left:0;
-    margin-bottom:15px;
-    color:#555;
-}
-
-.toolkit-list > li{
-    font-weight:bold;
-    margin-top:15px;
-    list-style-type:square;
-    transition:.3s;
-}
-
-.toolkit-list > li:hover{
-    transform:translateX(8px);
-    color:rgb(196,11,11);
-}
-
-    .toolkit-list ul {
-      font-weight: normal;
-      list-style-type: circle;
-      margin-top: 5px;
+    .hero-banner-container:hover .hero-banner-img {
+      transform: scale(1.08);
     }
 
-    .nav-title img{
-    border-radius:50%;
-    animation:float 3s ease-in-out infinite;
-}
+    .content-wrapper {
+      animation: fadeUp 1.2s ease;
+    }
 
-::selection{
-    background:rgb(196,11,11);
-    color:#fff;
-}
+    .brand-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
 
-   
-footer{
-    text-align:center;
-    padding:25px;
-    background:#f9f9f9;
-    border-top:1px solid #eee;
-    color:#777;
-    animation:fadeUp 1.5s ease;
-}
+    .brand-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(196, 11, 11, 0.1);
+      border-color: rgba(196, 11, 11, 0.3);
+    }
+
+    ::selection {
+      background: rgb(196,11,11);
+      color: #fff;
+    }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
 
-  <div class="top-bar">
-    <a href="index.html" class="logo-link">
-      <h1 class="nav-title">
-        <img src="images/pix.jpg" width="45" height="45" alt="Logo"/> 
-        About Us.
+  
+  <nav class="top-bar bg-white border-b border-gray-200 px-4 sm:px-8 py-3">
+    <div class="flex flex-wrap items-center justify-between mx-auto max-w-7xl">
+      
+      <a href="index.html" class="logo-link flex items-center">
+        <h1 class="nav-title text-xl font-bold flex items-center gap-2 sm:gap-3">
+          <img src="images/pix.jpg" width="45" height="45" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover" alt="Logo"/> 
+          <span>About Us.</span>
+        </h1>
+      </a>
 
-      </h1>
-    </a>
+    
+      <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-dropdown" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
 
-<ul class="fav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html" target="_tab">About Us</a></li>
-    <li><a href="product.html" target="_tab">Our Product</a></li>
-    <li><a href="contact.html" target="_tab">Contact Us</a></li>
+      
+      <div class="hidden w-full lg:block lg:w-auto mt-4 lg:mt-0" id="navbar-dropdown">
+        <ul class="fav-list flex flex-col lg:flex-row items-start lg:items-center gap-3 lg:gap-4 font-bold text-sm bg-white p-4 lg:p-0 rounded-lg border lg:border-0 border-gray-100">
+          <li><a href="index.html" class="block py-2 px-1">Home</a></li>
+          <li><a href="about.html" class="block py-2 px-1 active">About Us</a></li>
+          <li><a href="product.html" target="_tab" class="block py-2 px-1">Our Product</a></li>
+          <li><a href="contact.html" target="_tab" class="block py-2 px-1">Contact Us</a></li>
 
-    <li class="dropdown">
-        <a href="#">More ▾</a>
-
-        <ul class="dropdown-menu">
-            <li><a href="form.html" target="_tab">Login</a></li>
-            <li><a href="service.html" target="_tab">Crypto</a></li>
-            <li><a href="fcmb.html" target="_tab">FCMB</a></li>
-            <li><a href="marquee.html" target="_tab">Marquee</a></li>
+          
+          <li class="w-full lg:w-auto">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-1 text-[#444444] hover:text-[rgb(196,11,11)] font-bold text-sm">
+                More ▾
+              </button>
+              
+              <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-xl w-44">
+                  <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                    <li><a href="form.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">Login</a></li>
+                    <li><a href="service.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">Crypto</a></li>
+                    <li><a href="fcmb.html" target="_tab" class="block px-4 py-2 hover:bg-gray-100 hover:text-[rgb(196,11,11)]">FCMB</a></li>
+                  </ul>
+              </div>
+          </li>
         </ul>
-    </li>
-</ul>
+      </div>
+
+    </div>
+  </nav>
+
+  
+  <div class="hero-banner-container w-full relative">
+    <img src="images/logo.jpg" alt="herobanner" class="hero-banner-img w-full"/>
+    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <h2 class="text-white text-2xl sm:text-4xl font-extrabold tracking-wide uppercase px-4 text-center">Empowering Tech Learners</h2>
+    </div>
   </div>
 
-  <div class="hero-banner-container">
-    <img src="images/logo.jpg" alt="herobanner" class="hero-banner-img"/>
-  </div>
+  
+  <main class="content-wrapper max-w-5xl mx-auto px-4 sm:px-6 my-10 sm:my-14 space-y-12">
 
-  <main class="content-wrapper">
+    
+    <section class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center gap-6">
+      <div class="space-y-3">
+        <span class="bg-[rgba(196,11,11,0.1)] text-[rgb(196,11,11)] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Welcome</span>
+        <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          We are a team of passionate creators dedicated to building <strong class="text-gray-900">high-quality digital solutions</strong>. Our mission is to make the web a <em class="text-[rgb(196,11,11)] font-medium">more beautiful and accessible</em> place for everyone. 
+          <span class="bg-red-50 text-[rgb(196,11,11)] px-2 py-0.5 rounded font-semibold border border-red-100">Continuous learning</span> is at the core of everything we do.
+        </p>
+      </div>
+    </section>
 
-    <p>Welcome! We are a team of passionate creators dedicated to building <strong>high-quality digital solutions</strong>. Our mission is to make the web a <em>more beautiful and accessible</em> place for everyone. <mark>Continuous learning</mark> is at the core of everything we do.</p>
+    
+    <section class="space-y-4">
+      <div class="border-b-2 border-gray-100 pb-2">
+        <h2 class="text-xl sm:text-2xl font-bold text-[rgb(196,11,11)] flex items-center gap-2">
+          <span>Our Core Values</span>
+        </h2>
+        <p class="text-sm text-gray-500">These are the principles that guide our day-to-day work.</p>
+      </div>
 
-    <h2>Our Core Values</h2>
-    <p>These are the principles that guide our day-to-day work:</p>
-    <ul>
-      <li><strong>Empathy:</strong> Understanding the needs of our users.</li>
-      <li><strong>Innovation:</strong> Pushing the boundaries of modern design.</li>
-      <li><strong>Integrity:</strong> Doing honest work and writing clean code.</li>
-    </ul>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+        
+        <div class="brand-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-lg bg-red-50 text-[rgb(196,11,11)] flex items-center justify-center font-bold text-lg">01</div>
+            <h3 class="text-lg font-bold text-gray-900">Empathy</h3>
+            <p class="text-sm text-gray-600">Understanding the real needs of our users to design solutions that make an impact.</p>
+          </div>
+        </div>
 
-    <h2>How We Work (Our Process)</h2>
-    <p>We follow a strict, step-by-step roadmap to bring ideas to life:</p>
-    <ol>
-      <li><ins>Discovery & Planning</ins> - Brainstorming and setting project benchmarks.</li>
-      <li><ins>Design & Prototyping</ins> - Creating visual layouts.</li>
-      <li><ins>Development & Testing</ins> - Writing clean, functional code.</li>
-    </ol>
+        
+        <div class="brand-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-lg bg-red-50 text-[rgb(196,11,11)] flex items-center justify-center font-bold text-lg">02</div>
+            <h3 class="text-lg font-bold text-gray-900">Innovation</h3>
+            <p class="text-sm text-gray-600">Pushing the boundaries of modern design and web technologies continuously.</p>
+          </div>
+        </div>
 
-    <h2>Key Terms</h2>
-    <p>Here are a few technical terms we live by:</p>
-    <dl class="terms-list">
-      <dt><strong>HTML5</strong></dt>
-      <dd>The standard markup language used to structure content on the web.</dd>
+        
+        <div class="brand-card bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded-lg bg-red-50 text-[rgb(196,11,11)] flex items-center justify-center font-bold text-lg">03</div>
+            <h3 class="text-lg font-bold text-gray-900">Integrity</h3>
+            <p class="text-sm text-gray-600">Doing honest, transparent work and writing clean, scalable codebase.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <dt><strong>CSS3</strong></dt>
-      <dd>The style sheet language used to describe the presentation and layout of a document.</dd>
+    
+    <section class="space-y-6">
+      <div class="border-b-2 border-gray-100 pb-2">
+        <h2 class="text-xl sm:text-2xl font-bold text-[rgb(196,11,11)]">How We Work (Our Process)</h2>
+        <p class="text-sm text-gray-500">We follow a strict, step-by-step roadmap to bring ideas to life.</p>
+      </div>
 
-      <dt><strong>Responsive Design</strong></dt>
-      <dd>An approach to web design that makes web pages render well on a variety of devices and screen sizes.</dd>
-    </dl>
+      <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm">
+        <ol class="relative border-s border-gray-200 dark:border-gray-700 ms-3 space-y-8">                  
+            <li class="mb-6 ms-6">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-red-100 rounded-full -start-3 ring-8 ring-white text-[rgb(196,11,11)] font-bold text-xs">
+                    1
+                </span>
+                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">
+                    Discovery & Planning
+                    <span class="bg-red-100 text-[rgb(196,11,11)] text-xs font-medium me-2 px-2.5 py-0.5 rounded ms-3">Step 1</span>
+                </h3>
+                <p class="text-base font-normal text-gray-600">Brainstorming, understanding user requirements, and setting project benchmarks.</p>
+            </li>
+            <li class="mb-6 ms-6">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-red-100 rounded-full -start-3 ring-8 ring-white text-[rgb(196,11,11)] font-bold text-xs">
+                    2
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">Design & Prototyping</h3>
+                <p class="text-base font-normal text-gray-600">Creating wireframes, visual layouts, and responsive UI components.</p>
+            </li>
+            <li class="ms-6">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-red-100 rounded-full -start-3 ring-8 ring-white text-[rgb(196,11,11)] font-bold text-xs">
+                    3
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900">Development & Testing</h3>
+                <p class="text-base font-normal text-gray-600">Writing clean semantic code, ensuring cross-browser capability, and running tests.</p>
+            </li>
+        </ol>
+      </div>
+    </section>
 
-    <h2>Our Technical Tool-kit</h2>
-    <p>A breakdown of the specific tools and topics we specialize in:</p>
-    <ul class="toolkit-list">
-      <li>Front-End Development
-        <ul>
-          <li>Semantic HTML Structure</li>
-          <li>Modern CSS Layouts (Flexbox and Grid)</li>
-        </ul>
-      </li>
-      <li>Design Frameworks
-        <ul>
-          <li>Figma Wireframing</li>
-          <li>Color Theory & Typography</li>
-        </ul>
-      </li>
-    </ul>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+    
+      <section class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[rgb(196,11,11)] border-b border-gray-100 pb-2">Key Terms</h2>
+        <p class="text-sm text-gray-500">Core concepts driving modern front-end web development:</p>
+        
+        <dl class="space-y-4 pt-2">
+          <div class="p-3 rounded-lg bg-gray-50 hover:bg-red-50/50 transition">
+            <dt class="font-bold text-gray-900 text-base">HTML5</dt>
+            <dd class="text-sm text-gray-600 mt-0.5">The standard markup language used to structure content on the web.</dd>
+          </div>
+
+          <div class="p-3 rounded-lg bg-gray-50 hover:bg-red-50/50 transition">
+            <dt class="font-bold text-gray-900 text-base">CSS3 & Frameworks</dt>
+            <dd class="text-sm text-gray-600 mt-0.5">Languages and toolkits used to present, style, and structure layouts dynamically.</dd>
+          </div>
+
+          <div class="p-3 rounded-lg bg-gray-50 hover:bg-red-50/50 transition">
+            <dt class="font-bold text-gray-900 text-base">Responsive Design</dt>
+            <dd class="text-sm text-gray-600 mt-0.5">Ensures web pages render smoothly across mobile phones, tablets, and desktop displays.</dd>
+          </div>
+        </dl>
+      </section>
+
+    
+      <section class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4">
+        <h2 class="text-xl font-bold text-[rgb(196,11,11)] border-b border-gray-100 pb-2">Technical Tool-kit</h2>
+        <p class="text-sm text-gray-500">Specialized tools and competencies:</p>
+
+        
+        <div id="accordion-toolkit" data-accordion="collapse" data-active-classes="bg-red-50 text-[rgb(196,11,11)]" class="mt-4">
+          <h3 id="accordion-heading-1">
+            <button type="button" class="flex items-center justify-between w-full p-4 font-semibold text-gray-800 border border-b-0 border-gray-200 rounded-t-xl focus:ring-2 focus:ring-red-100 hover:bg-gray-50 gap-3" data-accordion-target="#accordion-body-1" aria-expanded="true" aria-controls="accordion-body-1">
+              <span>Front-End Development</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h3>
+          <div id="accordion-body-1" class="hidden" aria-labelledby="accordion-heading-1">
+            <div class="p-4 border border-b-0 border-gray-200 bg-white">
+              <ul class="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                <li>Semantic HTML Structure</li>
+                <li>Modern CSS Layouts (Flexbox & Grid)</li>
+                <li>Tailwind CSS & Flowbite Integration</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 id="accordion-heading-2">
+            <button type="button" class="flex items-center justify-between w-full p-4 font-semibold text-gray-800 border border-gray-200 rounded-b-xl focus:ring-2 focus:ring-red-100 hover:bg-gray-50 gap-3" data-accordion-target="#accordion-body-2" aria-expanded="false" aria-controls="accordion-body-2">
+              <span>Design Frameworks</span>
+              <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+              </svg>
+            </button>
+          </h3>
+          <div id="accordion-body-2" class="hidden" aria-labelledby="accordion-heading-2">
+            <div class="p-4 border border-t-0 border-gray-200 rounded-b-xl bg-white">
+              <ul class="space-y-2 text-sm text-gray-600 list-disc list-inside">
+                <li>Figma Wireframing & Prototyping</li>
+                <li>Color Theory & Modern Typography</li>
+                <li>User Interface (UI) Accessibility</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
 
   </main>
 
-  <footer>
+  <footer class="bg-white text-center p-6 border-t border-gray-200 text-gray-500 text-sm">
     <p>&copy; 2026 M&C Training Academy. All rights reserved.</p>
   </footer>
 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
